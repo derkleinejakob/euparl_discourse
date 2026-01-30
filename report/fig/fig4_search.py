@@ -17,9 +17,9 @@ selected_categories = [
 ]
 
 category_labels = {
-    "immigrants_as_threat": "Immigration is a Threat",
-    "immigrants_as_problematic": "Immigrants' Culture is Problematic",
-    "immigrants_humanitarian": "Humanitarian Principles in Migration"
+    "immigrants_as_threat": "Supernarrative: \n \\textit{Immigration is a Threat}",
+    "immigrants_as_problematic": "Supernarrative: \n \\textit{Immigrants' Culture is Problematic}",
+    "immigrants_humanitarian": "Comparison narrative: \n \\textit{Humanitarian Principles in Migration}"
 }
 
 # filter df to only CHES years and compute correlations
@@ -138,6 +138,6 @@ for i, category in enumerate(selected_categories):
 
 fig.legend(handles=handles, labels=[const.LEGEND_BLOCK[label] for label in labels], 
            loc='upper center', ncol=len(const.ORDER_BLOCK), frameon=True, 
-           bbox_to_anchor=(0.5, 0.96), fancybox=True, shadow=False)
+           bbox_to_anchor=(0.5, 0.92), fancybox=True, shadow=False)
 
 fig.savefig("report/fig/fig4_search.pdf")
