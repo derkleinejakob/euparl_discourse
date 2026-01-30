@@ -7,6 +7,6 @@ Gemini \emph{1) } preserved speeches which were already in English
 % \footnote 
     % {(TODO add quantifier) Since we created translations before extensively cleaning the dataset, some English speeches included bracketed language flags that led to Gemini re-translating the English speeches.
     % These reformulations are however almost identical to the original speech. Therefore, we accepted those instances where Gemini failed to recognize English texts.} 
-and \emph{2) } created translations whose embeddings are very similar to Parllaw's for non-English speeches (bootstrapped 0.95 confidence interval of mean cosine similarity: 0.969, n=1001). 
+and \emph{2) } created translations whose embeddings are close to Parllaw's for non-English speeches (bootstrapped $0.95$ confidence interval of mean cosine similarity: $0.969$, $n=1001$). 
 Thus, we assume that Gemini's and Parllaw's translations are similar enough to fill in the missing translations with Gemini's, and conduct our analysis under the assumption that all translations stem from the same source. 
 % However, we note that the mixture of two translation approaches might nevertheless introduce a bias to our dataset, that we have to check for. (TODO: did we check for that)
