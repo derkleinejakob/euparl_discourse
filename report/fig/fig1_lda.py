@@ -146,7 +146,7 @@ df_migration.pivot(index='year', columns='block', values='n_speeches').plot.area
 ax2_combined.set_xlabel("")
 ax2_combined.set_ylabel('Number of Migration Speeches')
 handles, labels = ax2_combined.get_legend_handles_labels()
-labels = [const.LEGEND_BLOCK[label] for label in labels]
+labels = [const.LEGEND_BLOCK_LONG[label] for label in labels]
 ax2_combined.legend(handles[::-1], labels[::-1], loc='upper right', frameon=True)
 ax2_combined.set_axisbelow(True)
 ax2_combined.grid(alpha=0.3)

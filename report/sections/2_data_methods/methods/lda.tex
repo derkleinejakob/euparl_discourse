@@ -20,12 +20,7 @@ We compared different model fits and chose one based on the its coherence score 
 % the resulting topic coherence (TODO explanation) and the fidelity of the topics through manual inspection.
 % Our final model contains 30 topics (for 10 iterations) --- one of which assigns highest probabilities to the words X, Y, Z (TODO words), which we call "migration topic".
 
-% Finding threshold
-% For each topic, the model assigns each speech in the corpus a probability of covering that topic. 
-To create a subset of speeches that are relevant in the context of migration, we identified a topic probability threshold manually. Two authors classified a sample of 100 speeches with a topic score in the range [X, Y] (TODO: range)
-
-
-% To find speeches covering migration, a minimum topic probability was identified manually: two authors rated a sample of 100 speeches whose migration score 
-% (i.e. the assigned probability of the LDA model for the migration topic of that speech) was in the range [X, Y] (TODO range) which is where we suspected the relevance threshold. 
+% threshold
+To determine an appropriate migration-topic probability threshold, two raters sampled 100 speeches from the probability range where the cutoff was expected based on initial tests (prob = [0.20, 0.35]) and classified whether they were migration-related. We then used receiver operating characteristic (ROC) analysis to identify the threshold that minimized the difference between true and false positive rates (prob = 0.25).
 
 (TODO finish this)
