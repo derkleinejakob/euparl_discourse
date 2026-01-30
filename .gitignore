@@ -1,0 +1,16 @@
+data
+.vscode
+report/build
+**/.DS_Store
+**/__pycache__/
+
+report/report.synctex.gz
+report/report.aux
+report/report.bbl
+report/report.blg
+report/report.fdb_latexmk
+report/report.log
+
+experiments/pre0_time_range.ipynb
+tf_idf_ratings_Jakob.csv
+tf_idf_ratings_quirin.csv

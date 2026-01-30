@@ -1,0 +1,12 @@
+\textbf{Translation}
+To keep the speeches most comparable in the embedding space, we use English translations instead of the orignal speeches. 
+Until the year X (TODO), the Parllaw dataset includes a machine translation for each speech. The remaining X (TODO) translations were created using Gemini (2.5-flash, TODO: add citation), a LLM capable of translating texts across various domains (TODO citation). 
+We checked that Gemini \emph{1)} did not re-formulate speeches that were already in English and that \emph{2)} its translations are comparable to Parllaw's  
+in the embedding space. For this, we tested its translations on a random sample of speeches that had already been translated by Parllaw. 
+Gemini \emph{1) } preserved speeches which were already in English
+\footnote 
+    {(TODO add quantifier) Since we created translations before extensively cleaning the dataset, some English speeches included bracketed language flags that led to Gemini re-translating the English speeches.
+    These reformulations are however almost identical to the original speech. Therefore, we accepted those instances where Gemini failed to recognize English texts.} 
+and \emph{2) } created translations whose embeddings are very similar to Parllaw's (bootstrapped 0.95 confidence interval of mean cosine similarity: 0.969, n=1001). 
+Thus, we assume that Gemini's and Parllaw's translations are similar enough to conduct our analysis under the assumption that all translations stem from the same source after filling in the missing translations with Gemini's. 
+However, we note that the mixture of two translation approaches might nevertheless introduce a bias to our dataset, that we have to check for. (TODO: did we check for that)
