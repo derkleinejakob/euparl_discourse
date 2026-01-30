@@ -11,6 +11,7 @@ report/report.blg
 report/report.fdb_latexmk
 report/report.log
 report/report.fls
+report/report.pdf
 
 experiments/pre0_time_range.ipynb
 tf_idf_ratings_Jakob.csv
