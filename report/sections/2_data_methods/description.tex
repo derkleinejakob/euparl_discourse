@@ -1,12 +1,63 @@
-We are using the novel \textit{ParlLawSpeech} (PLS) dataset from Schwalbach et al. 2025 for the investigation of our study. It contains more than 570,000 plenary speeches from legislative periods of the European parliament (EP) between 1999 and 2024.
-The authors also provide (partially) machine translated text in English for about 40\% of the speeches, since the EP stopped providing official translations around the end of 2012. Furthermore, the dataset contains metadata on the speakers and the speeches given,
-e.g. date and agenda item under which the speech was given, if submission was in written form and/or from multiple \textit{members of parliament} (MEPs), or the speaker's party affiliation (referring to European political parties/groups), among other. We further enriched
-the dataset with metadata accessible from the public API of the EP's "Open Data Portal", in particular the national party affiliations of each speaker (by using the \textit{EP-ID} of the respective MEPs). This allowed us to link the PLS dataset with the \textit{Chapel Hill Expert Survey} (CHES)
-from Rovny, Bakker et al. 2025. The CHES dataset estimates party positioning on European integration, ideology (e.g. left/right) and policy issues for national parties in all member states of the European Union (EU). The study surveyed hundreds of experts roughly every four years
-between 1999 and 2024 and more recently (**TODO**: since when???) also includes ratings of non-EU policy issues such as immigration or anti-elite rhetoric (**TODO:** which are relevant in particular?) Assuming that the ideological orientation of a speaker's affiliated national party
-roughly reflects his own position, the CHES data set could help us to better control our analyses, as membership of a European party (group) presumably allows for less detailed/granular statements/assumptions.
+To analyze how migration is discussed in the EP, we rely on the \textit{ParlLawSpeech} (PLS) dataset \citep{SDN-10.7802-2824}, 
+providing us with a large-scale corpus of more than half a million verbatim parliamentary speeches alongside rich metadata, covering European legislatures between 1999 and 2024.
+
+We restrict our analyses to the last two complete legislative periods (2014–2024), as the 2015/2016 “refugee crisis” marks a qualitative shift in the nature and salience of 
+migration-related debates that could bias topic-model estimation. This shift is reflected in the proportion of migration-labeled speeches, which remains around 1\% prior to 2014 but rises to over 2.5\% thereafter.
+
+We further enrich the PLS corpus with additional speaker-level metadata obtained from the EP’s Open Data Portal API, in particular the national party affiliation of 
+each Member of the European Parliament (MEP) at the time a speech was delivered. 
+
+To contextualize and validate patterns observed in parliamentary speech, we also draw on expert's perceptions of party positions from the \textit{Chapel Hill Expert Survey} 
+(CHES) of \citet{rovny_CHES_2024}. CHES is a long-running study, surveying hundreds of country experts who estimate the ideological positions of national political parties across Europe on a 
+wide range of dimensions, such as general left–right ideology, European integration, and issue-specific policy stances, e.g. experts are asked to place parties on a scale from 0 ("strongly favors liberal
+policy on immigration") to 10 ("strongly favors restrictive policy on immigration).
+Since 1999, the survey has been conducted roughly every four years, including 2014, 2019 and 2024, offering repeated cross-sectional measurements of 
+party positions that enable the study of ideological change over time.
+While parliamentary speeches capture how parties communicate and frame political issues, CHES provides an independent, expert-based assessment of where parties are 
+positioned in ideological space. Combining the two allows us to triangulate latent patterns in political discourse against an external benchmark that is not derived 
+from the same textual data. Importantly, CHES scores are not used to label or classify individual speeches, but instead serve as contextual variables against which aggregated 
+speech patterns can be compared.
+
+% TODO specific numbers/facts on CHES<->PLS merging? (how many rows enriched etc.)
+
+%More recent CHES waves include detailed assessments of parties’ positions on immigration and multiculturalism, 
+%making the dataset particularly valuable for studies of migration-related political conflict.
+% 
+%
+% By employing Latent Dirichlet Allocation (TODO verweis sec), we identify speeches related to the topic of migration, and after only including the legislative periods between 2014 and 2024
+% this leaves us with 9,705 datapoints in total.
+
+% After only including speeches of legislative terms between 2014 and 2024, this leaves us with XXXX datapoints in total.
+
+% -> put this at the end of the preprocessing section?
+
+
+% This belongs to preprocessing:
+% Most score dimensions in the CHES dataset range from 0-10, except for a few survey items (e.g. having a scale of 1-7) which we recalibrated to match the 0-10 range, as done in
+% [here](https://onlinelibrary.wiley.com/doi/epdf/10.1111/ajps.12115?saml_referrer)
+
+%%% OLD TEXT
+%We are using the novel \textit{ParlLawSpeech} (PLS) dataset from Schwalbach et al. 2025 for the investigation of our study. 
+%It contains more than 570,000 plenary speeches from legislative periods of the European parliament (EP) between 1999 and 2024.
+%The authors also provide (partially) machine translated text in English for about 40\% of the speeches, since the EP stopped providing official translations around the end of 2012. 
+%Furthermore, the dataset contains metadata on the speakers and the speeches given,
+%e.g. date and agenda item under which the speech was given, if submission was in written form and/or from multiple \textit{members of parliament} (MEPs), or the speaker's 
+%party affiliation (referring to European political parties/groups), among other. We further enriched
+%the dataset with metadata accessible from the public API of the EP's "Open Data Portal", in particular the national party affiliations of each speaker (by using the \textit{EP-ID} of the 
+%respective MEPs). This allowed us to link the PLS dataset with the \textit{Chapel Hill Expert Survey} (CHES)
+%from Rovny, Bakker et al. 2025. The CHES dataset estimates party positioning on European integration, ideology (e.g. left/right) and policy issues for national parties in all member states of 
+%the European Union (EU). The study surveyed hundreds of experts roughly every four years
+%between 1999 and 2024 and more recently (**TODO**: since when???) also includes ratings of non-EU policy issues such as immigration or anti-elite rhetoric (**TODO:** which are relevant in 
+%particular?) Assuming that the ideological orientation of a speaker's affiliated national party
+%roughly reflects his own position, the CHES data set could help us to better control our analyses, as membership of a European party (group) presumably allows for less detailed/granular 
+%statements/assumptions.
+%We restrict our analyses to the last two complete legislative periods (2014–2024), as the 2015/2016 “refugee crisis” marks a qualitative shift in the nature and salience of 
+%migration-related debates that could bias topic-model estimation. This shift is reflected in the proportion of migration-labeled speeches, which remains around 1\% prior to 2014 but rises to over 2.5\% thereafter.
 
 
 % 2015 and 2016 anomaly 
-\textbf{2015 and 2016 anomaly} In 2015 and 2016, there is a drastic increase in the number of speeches compared to the other years (72,964 in 2015 and 16 on average, compared to 10,098 in the other years on average). This difference can be explained with a rule-change that was adopted by the parliament at the end of 2016, discontinuing so-called 'written declarations' that allowed party members to hand in short declarations on a certain issue. 
-
+\textbf{2015 and 2016 anomaly} In 2015 and 2016, there is a drastic increase in the number of speeches compared to the other years (72,964 in 2015 and 16 on average, compared to 10,098 in the other years on average). 
+This difference can be explained with a rule-change that was adopted by the parliament at the end of 2016, discontinuing so-called 'written declarations' that allowed party members to hand in short expressions of 
+opinion on a certain issue [TODO ref]. Omitting all 'written' speeches (TODO: explain what written flag means) can normalize the number of speeches per year. However, for the general analysis, we keep written declarations as 
+part of the dataset because they can contain relevant stances of the parties on political issues. Since written declarations could be co-signed by multiple speakers, they can appear duplicated in the dataset. 
+These duplicated items were removed, keeping only the first instance of a duplicated speech.

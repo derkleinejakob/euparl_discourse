@@ -62,6 +62,16 @@ LEGEND_BLOCK = {
     "(extreme)_right": "(Far) Right",
 }
 
+LEGEND_BLOCK_LONG = {
+    "left": "GUE-NGL (Left)",
+    "green": "Greens-EFA",
+    "social_democratic": "S\&D (Social Democrats)",
+    "christian_conservative": "EPP (Christian Democrats)",
+    "liberal": "ALDE/Renew (Liberals)",
+    "(extreme)_right": "ECR/ID/ENF (Right / Far-Right)",
+}
+
+
 COLOR_MAPS = {
     "party": COLOR_MAP_PARTY,
     "block": COLOR_MAP_BLOCK,
