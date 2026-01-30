@@ -54,7 +54,7 @@ def plot_pca_axis_development(df: pd.DataFrame, axis: int,  target_var: str,
                               axis_labels: tuple[list[str]], color_map: dict, ax: plt.Axes,
                               top_k: int = 3):
 
-    ax.set_title(f"Development of parties over the years accross reduced-axis {axis + 1}")
+    ax.set_title(f"PLS Axis: {axis + 1}")
 
 
     sns.lineplot(data=df, x='year', y=f"reduced_{axis}", marker='o', hue=target_var, palette=color_map, ax=ax, legend=False)
@@ -79,61 +79,15 @@ def plot_pca_axis_development(df: pd.DataFrame, axis: int,  target_var: str,
     # ax.legend(loc="lower left")
 
 
-
-def plot_aggregated_yearly_data(aggregated: pd.DataFrame, reduced_embeddings: np.array, target_var: str, color_map: dict, ax):
-    ax.set_title("Two Dimensional Projection of Political Groups")
-
-    grt_y = np.abs(reduced_embeddings[:, 1]).max() * 1.1
-    grt_x = np.abs(reduced_embeddings[:, 0]).max() * 1.1
-
-    ax.set_xlim(-grt_x, grt_x)
-    ax.set_ylim(-grt_y, grt_y)
-
-    scale = grt_y * 2
-
-    unique_years = list(aggregated['year'].unique() )
-    years_to_display = unique_years[::-2]
-
-    ax.set_xlabel("First Axis")
-    ax.set_ylabel("Second Axis")
-
-    for party in aggregated[target_var].unique():
-        party_mask = aggregated[target_var] == party
-        years = aggregated[party_mask]['year']
-        party_embeddings = reduced_embeddings[party_mask]
-
-        ax.scatter(party_embeddings[:, 0], party_embeddings[:, 1], marker='o', color=color_map[party], label=party)
-        for i, year in enumerate(years):
-          if year in years_to_display:
-            ax.text(party_embeddings[i,0] - scale * 0.025, party_embeddings[i,1]+ scale * 0.03, f"{year}",
-                      fontsize=8, bbox=dict(boxstyle="round", color=color_map[party], alpha=0.7), 
-                      color='white',
-                      )
-
-    ax.axhline(0, linestyle="--")
-    ax.axvline(0, linestyle="--")
-    ax.grid()
-
-    handles, labels = ax.get_legend_handles_labels()
-    labels = [LEGEND_BLOCK[label] for label in labels]
-
-    ax.legend(handles[::-1], labels[::-1], loc='upper left', frameon=True)
-    # ax.legend(loc="upper left")
-    return ax
-
-
 def display_results(df: pd.DataFrame, model, axis: tuple[int], aggregated: pd.DataFrame, vocab_df: pd.DataFrame,
                      reduced_embeddings: np.stack, target_var: str, color_map: dict) -> None:
     
     fig = plt.figure(layout="constrained")
 
-    gs0 = fig.add_gridspec(1, 2)
+    gs1 = fig.add_gridspec(1, 2)
 
-    gs1 = gs0[1].subgridspec(2, 1)
-
-    ax1 = fig.add_subplot(gs0[0])
     ax2 = fig.add_subplot(gs1[0])
-    ax3 = fig.add_subplot(gs1[1], sharex=ax2)
+    ax3 = fig.add_subplot(gs1[1], sharey=ax2)
 
     axis_labels_0 = closest_words_for_pc(axis[0], model, vocab_df['word'], np.stack(vocab_df[EMBEDDING_MODEL]))
     axis_labels_1  = closest_words_for_pc(axis[1], model, vocab_df['word'], np.stack(vocab_df[EMBEDDING_MODEL]))
@@ -141,15 +95,22 @@ def display_results(df: pd.DataFrame, model, axis: tuple[int], aggregated: pd.Da
     display_axis_semantics([(axis_labels_0), 
                             (axis_labels_1)])
 
-    plot_aggregated_yearly_data(aggregated, reduced_embeddings, target_var, color_map, ax1)
+    # plot_aggregated_yearly_data(aggregated, reduced_embeddings, target_var, color_map, ax1)
     plot_pca_axis_development(df, 0, target_var,  axis_labels_0, color_map, ax2)
     plot_pca_axis_development(df, 1, target_var, axis_labels_1, color_map, ax3)
+
+    handles, labels = ax2.get_legend_handles_labels()
+    labels = [LEGEND_BLOCK[label] for label in labels]
+
+    ax2.legend(handles[::-1], labels[::-1], loc='upper left', frameon=True)
+    fig.suptitle("Temporal Development of Political Groups across PLS axis")
+    
     return fig
 
 
 
 
-params = bundles.icml2024(nrows=2,ncols=2, column="full") # if you need multiple columns / rows, change in your script
+params = bundles.icml2024(nrows=1,ncols=2, column="full") # if you need multiple columns / rows, change in your script
 params.update({"figure.dpi": 350})
 plt.rcParams.update(params)
 
