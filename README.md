@@ -23,8 +23,8 @@ The Parllaw speech dataset was first [transformed to .csv-files](src/transform_p
 - [Sanity checks](experiments/preprocessing_checks/pre0_translation_checks.ipynb): To make sure Gemini's translations can be used as a fill-in for Parllaw's missing translations, we checked that *1)* Gemini did not re-formulate speeches that were already in English and *2)* its translations are similar to Parllaw's translations in the embedding space. 
 
 #### Removing non-informative speech parts 
-- [Removing commentary](src/preprocessing/remove_commentary.py): TODO
-- [Removing formalities](src/preprocessing/remove_repeating_sentences.py): TODO
+- [Removing commentary](src/preprocessing/remove_commentary.py): Removing frequently used procedural descriptions, language markers and other types of commentary; present inside parentheses with rule-based filtering.
+- [Removing formalities](src/preprocessing/remove_repeating_sentences.py): With TF-IDF scores we remove extraneous formalities and decorum frequently present in the openning and closing parts of parliament debates.
 
 #### LDA
 *Note: LDA was done on an intermediate dataset created by running the preprocessing-pipeline once. Re-running it added the LDA's topic scores to the speeches.*
@@ -36,5 +36,5 @@ The Parllaw speech dataset was first [transformed to .csv-files](src/transform_p
 ## Analyses
 - Interactive LDA visualization: To investigate the prevalence of migration-related debate in the European Parliament, we created an interactive plot that displays how the debate topics shifted over the years. Run the interactive plot [here](experiments/q1_plot_lda.ipynb).
 - Agenda Setting: To explore whether parties engage in 'agenda setting', we explored when they mention migration, and in which contexts. Find the analysis [here](experiments/q2_agenda_setting.ipynb).
-- Dimensionality Reduction: TODO 
+- Dimensionality Reduction: To discern how party ideology is encoded in the semantic vector space and how it evolves in the last decade, we try out different dimensionality reduction methods and display our findings. Find the analysis [here (PCA)](experiments/q3_1_pca_interpretation.ipynb), [here (Temporal Trends)](experiments/q3_2_yearly_analysis.ipynb), [here (PLS)](experiments/q3_3_pls.ipynb), [here (Bootstrapping)](experiments/q3_3_x_bootstrapped_pls.ipynb) and [here (PLS stability)](experiments/q3_4_plsda_stability.ipynb)
 - Semantic Search: We analyzed whether parties reproduce previously found narratives surrounding migration. Find the analysis [here](experiments/q4_semantic_search.ipynb).

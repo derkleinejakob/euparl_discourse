@@ -83,7 +83,3 @@ def remove_commentary(df: pd.DataFrame, text_column: str = "translatedText") -> 
 
 
     
-# some more pattern suggestions:
-# "the MEP"
-# "the parliament decides"
-# "the sitting is | was"
