@@ -65,8 +65,7 @@ params.update({"figure.dpi": 350})
 plt.rcParams.update(params)
 
 # build plot with 2 rows: line plots on top, heatmaps below
-fig, axes = plt.subplots(2, 3, gridspec_kw={'height_ratios': [3, 1]})
-
+fig, axes = plt.subplots(2, 3, gridspec_kw={'hspace': 0})
 # Top row
 for i, category in enumerate(selected_categories):
     ax = axes[0, i]
@@ -92,7 +91,7 @@ for i, category in enumerate(selected_categories):
 
 # Bottom row: mini heatmaps
 # Add title for bottom row
-fig.text(0, 0.05, 'Most \n Correlated \n Party \n Ratings', ha='left')
+fig.text(0, 0.23, 'Most \n Correla- \n ted Party \n Ratings', ha='left')
 
 for i, category in enumerate(selected_categories):
     ax = axes[1, i]
@@ -131,13 +130,30 @@ for i, category in enumerate(selected_categories):
             ax.text(j + 0.5, 0.70, f'{np.abs(cor):.2f}{star}', ha='center', va='center', 
                    fontsize=8)
     else:
-        ax.text(0.5, 0.5, 'No significant\ncorrelations', 
-                ha='center', va='center', transform=ax.transAxes)
+        # Create blank heatmap with same dimensions as others (1 row, 3 columns)
+        blank_corr = np.zeros((1, 3))
+        sns.heatmap(blank_corr, annot=False, cmap='Reds',
+                    yticklabels=False, xticklabels=False, cbar=False,
+                    ax=ax, vmin=0, vmax=1, linewidths=0.5, square=True)
+        ax.text(1.5, 0.5, 'No significant\ncorrelations', 
+                ha='center', va='center', fontsize=7, weight='bold')
+        ax.set_ylabel("")
+        ax.set_xlabel("")
         ax.set_xticks([])
         ax.set_yticks([])
+
+# Manually adjust subplot positions to reduce vertical spacing
+for i in range(3):
+    # Get positions
+    pos_top = axes[0, i].get_position()
+    pos_bottom = axes[1, i].get_position()
+    
+    # Move bottom row up closer to top row
+    new_bottom = pos_top.y0 - 0.3  # Adjust this value to control spacing
+    axes[1, i].set_position([pos_bottom.x0, new_bottom, pos_bottom.width, pos_bottom.height])
 
 fig.legend(handles=handles, labels=[const.LEGEND_BLOCK[label] for label in labels], 
            loc='upper center', ncol=len(const.ORDER_BLOCK), frameon=True, 
            bbox_to_anchor=(0.5, 0.92), fancybox=True, shadow=False)
 
-fig.savefig("report/fig/fig4_search.pdf")
+fig.savefig("report/fig/fig4_search.pdf", bbox_inches='tight')
