@@ -57,8 +57,9 @@ def plot_pca_axis_development(df: pd.DataFrame, axis: int,  target_var: str,
     ax.set_title(f"PLS Axis: {axis + 1}")
 
 
-    sns.lineplot(data=df, x='year', y=f"reduced_{axis}", marker='o', hue=target_var, palette=color_map, ax=ax, legend=False)
-    ax.set_ylabel("")
+    sns.lineplot(data=df, x='year', y=f"reduced_{axis}",  hue=target_var, palette=color_map, ax=ax, legend=False)
+    ax.set_xlabel("")
+    ax.set_ylabel(" ")
 
     
     max_y_lim = max(abs(ax.get_ylim()[0]), abs(ax.get_ylim()[1]))
@@ -82,7 +83,7 @@ def plot_pca_axis_development(df: pd.DataFrame, axis: int,  target_var: str,
 def display_results(df: pd.DataFrame, model, axis: tuple[int], aggregated: pd.DataFrame, vocab_df: pd.DataFrame,
                      reduced_embeddings: np.stack, target_var: str, color_map: dict) -> None:
     
-    fig = plt.figure(layout="constrained")
+    fig = plt.figure()
 
     gs1 = fig.add_gridspec(1, 2)
 
@@ -99,11 +100,24 @@ def display_results(df: pd.DataFrame, model, axis: tuple[int], aggregated: pd.Da
     plot_pca_axis_development(df, 0, target_var,  axis_labels_0, color_map, ax2)
     plot_pca_axis_development(df, 1, target_var, axis_labels_1, color_map, ax3)
 
-    handles, labels = ax2.get_legend_handles_labels()
-    labels = [LEGEND_BLOCK[label] for label in labels]
+    # handles, labels = ax2.get_legend_handles_labels()
+    # labels = [LEGEND_BLOCK[label] for label in labels]
+    from matplotlib.lines import Line2D
 
-    ax2.legend(handles[::-1], labels[::-1], loc='upper left', frameon=True)
-    fig.suptitle("Temporal Development of Political Groups across PLS axis")
+    legend_elements = [
+        Line2D([0], [0], color=color_map[k], lw=2, label=LEGEND_BLOCK[k])
+        for k in color_map
+    ]
+
+    fig.legend(
+        handles=legend_elements,
+        loc="lower center",
+        ncol=len(legend_elements),
+        frameon=True,
+        bbox_to_anchor=(0.5, -0.12)
+    )
+    # fig.subplots_adjust(bottom=0.22)
+
     
     return fig
 
@@ -111,7 +125,7 @@ def display_results(df: pd.DataFrame, model, axis: tuple[int], aggregated: pd.Da
 
 
 params = bundles.icml2024(nrows=1,ncols=2, column="full") # if you need multiple columns / rows, change in your script
-params.update({"figure.dpi": 350})
+# params.update({"figure.dpi": 350})
 plt.rcParams.update(params)
 
 df['reduced_0'] = reduced[:, 0] 
@@ -120,4 +134,4 @@ df['reduced_1'] = reduced[:, 1]
 fig = display_results(df, pls, [0, 1], aggregated, vocab_df, 
                 pls.transform(np.stack(aggregated[EMBEDDING_MODEL])), "block", COLOR_MAPS['block'])
 
-fig.savefig("report/fig/fig3.pdf")
+fig.savefig("report/fig/fig3.pdf", bbox_inches="tight")
