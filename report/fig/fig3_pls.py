@@ -135,3 +135,4 @@ fig = display_results(df, pls, [0, 1], aggregated, vocab_df,
                 pls.transform(np.stack(aggregated[EMBEDDING_MODEL])), "block", COLOR_MAPS['block'])
 
 fig.savefig("report/fig/fig3.pdf", bbox_inches="tight")
+fig.savefig("report/fig/fig3.png", bbox_inches="tight")

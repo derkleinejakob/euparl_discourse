@@ -157,3 +157,4 @@ fig.legend(handles=handles, labels=[const.LEGEND_BLOCK[label] for label in label
            bbox_to_anchor=(0.5, 0.92), fancybox=True, shadow=False)
 
 fig.savefig("report/fig/fig4_search.pdf", bbox_inches='tight')
+fig.savefig("report/fig/fig4_search.png", bbox_inches='tight')

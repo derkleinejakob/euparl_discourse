@@ -67,6 +67,7 @@ ax1.spines['right'].set_visible(False)
 # save figure in case we use only this panel
 fig1 = ax1.get_figure()
 fig1.savefig("report/fig/fig1_panel1.pdf")
+fig1.savefig("report/fig/fig1_panel1.png")
 
 # ----- panel 2: number of migration speeches per party block over time ---------------------------------
 
@@ -143,6 +144,7 @@ ax2.spines['right'].set_visible(False)
 # save figure in case we use only this panel
 fig2 = ax2.get_figure()
 fig2.savefig("report/fig/fig1_panel2.pdf")
+fig2.savefig("report/fig/fig1_panel2.png")
 
 # ------- combine panels into one figure ------------------------------------------------------
 params = bundles.icml2024(nrows=2,ncols=1) 
@@ -183,5 +185,6 @@ ax2_combined.spines['right'].set_visible(False)
 
 # fig.tight_layout()
 fig.savefig("report/fig/fig1_combined.pdf")
+fig.savefig("report/fig/fig1_combined.png")
 
 

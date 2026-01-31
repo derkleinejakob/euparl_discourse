@@ -3,10 +3,11 @@ This repository contains the code to reproduce the analyses of the research proj
 
 ## TLdR: Findings 
 ### Q1: Quantifying Migration Discourse
-![Plot showing salience of migration discourse](report/fig/fig1_combined.pdf)
-
+![Plot showing salience of migration discourse](report/fig/fig1_combined.png)
 
 ### Q2: Differentiating Migration Discourse
+![Plot showing axis interpretation of reduced speech embeddings](report/fig/fig3.png)
+
 ### Q3: Migration Narratives 
 
 
