@@ -1,18 +1,39 @@
 # Deconstructing a Decade of Migration Discourse in the European Parliament
 This repository contains the code to reproduce the analyses of the research project "Deconstructing a Decade of Migration Discourse in the European Parliament", conducted for Data Literacy by Prof. Hennig in the winter term 2025/26. 
 
+## TLdR: Findings 
+### Q1: Quantifying Migration Discourse
+![Plot showing salience of migration discourse](report/fig/fig1_combined.pdf)
+
+
+### Q2: Differentiating Migration Discourse
+### Q3: Migration Narratives 
+
+
 ## Data 
 The data can be downloaded at [TODO: link]. 
 ### Preprocessing 
-The Parllaw speech dataset was first [transformed to .csv-files](src/transform_pls_rds_to_csv.R) and then [preprocessed](src/preprocess_data.py)
+The Parllaw speech dataset was first [transformed to .csv-files](src/transform_pls_rds_to_csv.R) and then [preprocessed](src/preprocess_data.py). 
 
 #### Translation
 *Note: Translation was done before data-preprocessing.*
-- [send_translation_requests.py](src/translation/send_translation_requests.py): To avoid Gemini's rate limits, translation requests are sent in batches of varying sizes, retrying with a smaller batch size after failure. This is semi-automatic so that once no requests are possible anymore due to rate limits, one has to restart later at the point of last successful iteration. 
-- [process_translations.py](src/translation/process_translations.py): Once all requests are sent, load and process the model's responses and create a new dataframe with the translated speeches
+- [Sending translation requests](src/translation/send_translation_requests.py): To avoid Gemini's rate limits, translation requests are sent in batches of varying sizes, retrying with a smaller batch size after failure. This is semi-automatic so that once no requests are possible anymore due to rate limits, one has to restart later at the point of last successful iteration. 
+- [Processing model responses](src/translation/process_translations.py): Once all requests are sent, load and process the model's responses and create a new dataframe with the translated speeches
+- [Sanity checks](experiments/preprocessing_checks/pre0_translation_checks.ipynb): To make sure Gemini's translations can be used as a fill-in for Parllaw's missing translations, we checked that *1)* Gemini did not re-formulate speeches that were already in English and *2)* its translations are similar to Parllaw's translations in the embedding space. 
 
+#### Removing non-informative speech parts 
+- [Removing commentary](src/preprocessing/remove_commentary.py): TODO
+- [Removing formalities](src/preprocessing/remove_repeating_sentences.py): TODO
 
 #### LDA
 *Note: LDA was done on an intermediate dataset created by running the preprocessing-pipeline once. Re-running it added the LDA's topic scores to the speeches.*
-- first create multiple LDA models using scripts/lda/prepare_and_fit_multiple_lda.py => they will be saved in data/lda/{x}_topics/{k_passes}/model.model; this will also preprocess (or load already preprocessed data) data and dictionary 
-- then evaluate (using scripts/lda/evaluate_lda.py), this will chose model with best coherence which has a topic related to migration (also inspect manually the created topics of the chosen model to make sure they make sense); the chosen model is saved in data/lda/final/model.model; remember which number of topics and passes was selected 
+- [Identifying dictionary thresholds](experiments/preprocessing_checks/pre2_1_lda_dictionary_thresholds.ipynb): For pre-processing the speeches, this notebook was used to identify what words to remove from the LDA dictionary because they appear too often / little.
+- [Fitting LDA models](src/lda/create_lda_models.py): The speeches were preprocessed for LDA by lemmatizing the speeches and creating a filtered dictionary. Multiple LDA models were fit with different number of topics and passes.
+- [Evaluating LDA models](src/lda/evaluate_lda_models.py): The different models were compared with respect to their coherence score, whether there is a topic related to migration, and how relevant migration was in that topic.
+- [Selecting final LDA model](experiments/preprocessing_checks/pre2_2_lda_model_selection.ipynb): The final LDA model was chosen based on the computed comparison metrics, and through manually checking the fidelity of the created topics.
+
+## Analyses
+- Interactive LDA visualization: To investigate the prevalence of migration-related debate in the European Parliament, we created an interactive plot that displays how the debate topics shifted over the years. Run the interactive plot [here](experiments/q1_plot_lda.ipynb).
+- Agenda Setting: To explore whether parties engage in 'agenda setting', we explored when they mention migration, and in which contexts. Find the analysis [here](experiments/q2_agenda_setting.ipynb).
+- Dimensionality Reduction: TODO 
+- Semantic Search: We analyzed whether parties reproduce previously found narratives surrounding migration. Find the analysis [here](experiments/q4_semantic_search.ipynb).

@@ -16,6 +16,7 @@ if __name__ == "__main__":
         project_root = project_root.parent
         
     sys.path.append(str(project_root))
+    sys.path.append(str(project_root)+"/src")
 
     # change working directory to root so we can open data/file.csv from notebooks in ./experiments 
     # and dont have to open ../data/file.csv
