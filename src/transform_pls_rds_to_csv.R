@@ -36,7 +36,7 @@ return(data)
 }
 
 
-# transform data (speeches, bills and laws) -> NOTE: define custom ouput paths
+# transform data (speeches, bills and laws) -> NOTE: define custom output paths
 
 myspeech <- readRDS(path_speech)
 save_as_csv_with_metadata(myspeech, "D:/DataLiteracy/PLS_data_transformed/speech_output.csv")
@@ -48,7 +48,7 @@ mylaw <- readRDS(path_law)
 save_as_csv_with_metadata(mylaw, "D:/DataLiteracy/PLS_data_transformed/law_output.csv")
 
 
-# (opt) revert transformation and check or equality
+# (opt) revert transformation and check for equality
 
 restored_speech_meta <- reload_with_metadata("D:/DataLiteracy/PLS_data_transformed/speech_output.csv")
 all.equal(myspeech, restored_speech_meta)
