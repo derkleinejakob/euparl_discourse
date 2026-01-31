@@ -116,9 +116,8 @@ def display_results(df: pd.DataFrame, model, axis: tuple[int], aggregated: pd.Da
         frameon=True,
         bbox_to_anchor=(0.5, -0.12)
     )
-    fig.subplots_adjust(bottom=0.22)
+    # fig.subplots_adjust(bottom=0.22)
 
-    fig.suptitle("Temporal Development of Political Groups across PLS axis")
     
     return fig
 
@@ -126,7 +125,7 @@ def display_results(df: pd.DataFrame, model, axis: tuple[int], aggregated: pd.Da
 
 
 params = bundles.icml2024(nrows=1,ncols=2, column="full") # if you need multiple columns / rows, change in your script
-params.update({"figure.dpi": 350})
+# params.update({"figure.dpi": 350})
 plt.rcParams.update(params)
 
 df['reduced_0'] = reduced[:, 0] 
