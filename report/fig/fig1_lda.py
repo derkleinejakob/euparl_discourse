@@ -46,29 +46,6 @@ df_pivot = df_chosen.pivot(index='year', columns='dominant_topic', values='ratio
 # sort columns in chosen_topics order
 df_pivot = df_pivot[chosen_topics]
 
-# create stacked area plot
-ax1 = df_pivot.plot.area(cmap="viridis", alpha=0.75)
-ax1.set_ylabel('Proportion of Speeches')
-ax1.set_xlabel('')
-
-# reverse legend order
-handles, labels = ax1.get_legend_handles_labels()
-ax1.legend(handles[::-1], labels[::-1], loc='upper left', frameon=True, fancybox=True, shadow=False)
-# ax1.set_title('Proportion of Speeches by Dominant Topic Over Time')
-ax1.set_xlim(df_dominant['year'].min(), df_dominant['year'].max())
-ax1.yaxis.set_major_formatter(plt.FuncFormatter(lambda y, _: f'{y:.0%}'.replace('%', r'\%')))
-ax1.set_axisbelow(True)
-
-ax1.grid(alpha=0.3)
-# despine
-ax1.spines['top'].set_visible(False)
-ax1.spines['right'].set_visible(False)
-
-# save figure in case we use only this panel
-fig1 = ax1.get_figure()
-fig1.savefig("report/fig/fig1_panel1.pdf")
-fig1.savefig("report/fig/fig1_panel1.png")
-
 # ----- panel 2: number of migration speeches per party block over time ---------------------------------
 
 # create migration only dataframe
@@ -121,40 +98,16 @@ def plot_migration_by_block_written(df_in, value_col, ax, legend_labels, legend_
 
     return pivot
 
-ax2 = plt.gca()
-pivot_ratio = plot_migration_by_block_written(df_migration, 'ratio', ax2, const.LEGEND_BLOCK)
+# ------- build figure ------------------------------------------------------
 
-ax2.set_xlabel("")
-ax2.set_ylabel('Proportion of Speeches per Year')
-# ax.set_title("Migration Discourse by Political Block")
-
-# grid
-ax2.set_axisbelow(True)
-ax2.grid(alpha=0.3)
-
-# ax.vlines(x=const.ELECTION_YEARS, ymin=0, ymax=1, colors='gray', linestyles='dashed', alpha=0.5)
-
-ax2.set_xlim(2014, 2024)
-ax2.yaxis.set_major_formatter(plt.FuncFormatter(lambda y, _: f'{y:.0%}'.replace('%', r'\%')))
-
-# despine
-ax2.spines['top'].set_visible(False)
-ax2.spines['right'].set_visible(False)
-
-# save figure in case we use only this panel
-fig2 = ax2.get_figure()
-fig2.savefig("report/fig/fig1_panel2.pdf")
-fig2.savefig("report/fig/fig1_panel2.png")
-
-# ------- combine panels into one figure ------------------------------------------------------
 params = bundles.icml2024(nrows=2,ncols=1) 
-params.update({"figure.dpi": 350})
+params.update({"figure.dpi": 350, "figure.figsize": (params["figure.figsize"][0], 3.2)})
 plt.rcParams.update(params)
 
 fig, (ax1_combined, ax2_combined) = plt.subplots(2, 1)
 # panel 1
 df_pivot.plot.area(cmap="viridis", alpha=0.75, ax=ax1_combined)
-ax1_combined.set_ylabel('Proportion of Speeches per Year')
+ax1_combined.set_ylabel('Proportion of Speeches')
 ax1_combined.set_xlabel('')
 # ax1_combined.set_xticklabels([])
 handles, labels = ax1_combined.get_legend_handles_labels()
@@ -175,6 +128,10 @@ ax2_combined.set_xlim(2014, 2024)
 ax2_combined.spines['top'].set_visible(False)
 ax2_combined.spines['right'].set_visible(False)
 
+ax1_combined.yaxis.set_label_coords(-0.12, 0.5)
+ax2_combined.yaxis.set_label_coords(-0.12, 0.5)
+
+
 # add arrow annotation
 # ax1_combined.annotate(
 #     '', 
@@ -184,7 +141,5 @@ ax2_combined.spines['right'].set_visible(False)
 # )
 
 # fig.tight_layout()
-fig.savefig("report/fig/fig1_combined.pdf")
-fig.savefig("report/fig/fig1_combined.png")
-
+fig.savefig("report/fig/fig1_lda.pdf")
 
