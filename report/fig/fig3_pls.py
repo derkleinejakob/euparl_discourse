@@ -54,28 +54,33 @@ def plot_pca_axis_development(df: pd.DataFrame, axis: int,  target_var: str,
                               axis_labels: tuple[list[str]], color_map: dict, ax: plt.Axes,
                               top_k: int = 3):
 
-    ax.set_title(f"PLS Axis: {axis + 1}")
+    # ax.set_title(f"PLS Axis: {axis + 1}")
 
 
-    sns.lineplot(data=df, x='year', y=f"reduced_{axis}",  hue=target_var, palette=color_map, ax=ax, legend=False)
+    sns.lineplot(data=df, x='year', y=f"reduced_{axis}",  hue=target_var, palette=color_map, ax=ax, legend=False,
+                  err_kws={"alpha": 0.08}, linewidth=1.8)
     ax.set_xlabel("")
-    ax.set_ylabel(" ")
+    ax.set_ylabel(f"PLS {axis + 1}")
+    ax.spines.right.set_visible(False)
+    ax.spines.top.set_visible(False)
+    ax.tick_params(top=False, right=False)
 
     
     max_y_lim = max(abs(ax.get_ylim()[0]), abs(ax.get_ylim()[1]))
 
     ax.set_ylim((-max_y_lim, max_y_lim))  
-    ax.axhline(0, linestyle="--")
+    ax.set_xlim(2014, 2024)
+    ax.axhline(0, linestyle="--" , lw=1.0, alpha=.5)
 
     ax_label_neg = ', '.join(map(lambda x: x[0], axis_labels[0][:top_k]))
     ax_label_pos = ', '.join(map(lambda x: x[0], axis_labels[1][:top_k]))
 
-    props = dict(boxstyle='round', facecolor="grey", alpha=0.5)
+    props = dict(boxstyle='round', facecolor="white", alpha=0.85,  edgecolor="0.7",)
 
     # label for negative axis: 
-    ax.text(2014, -0.8 * max_y_lim , f"{ax_label_neg}", horizontalalignment="left", bbox=props)
+    ax.text(0.02, 0.08,  f"{ax_label_neg}",  transform=ax.transAxes, va="bottom", ha="left", horizontalalignment="left", bbox=props)
     # label for positive axis: 
-    ax.text(2014, 0.8 * max_y_lim, f"{ax_label_pos}", horizontalalignment="left", bbox=props)
+    ax.text(0.02, 0.9, f"{ax_label_pos}", transform=ax.transAxes, va="top", ha="left",  horizontalalignment="left", bbox=props)
     ax.grid()
     # ax.legend(loc="lower left")
 
@@ -85,10 +90,14 @@ def display_results(df: pd.DataFrame, model, axis: tuple[int], aggregated: pd.Da
     
     fig = plt.figure()
 
-    gs1 = fig.add_gridspec(1, 2)
+    gs1 = fig.add_gridspec(2, 1)
 
     ax2 = fig.add_subplot(gs1[0])
-    ax3 = fig.add_subplot(gs1[1], sharey=ax2)
+    ax3 = fig.add_subplot(gs1[1], sharex=ax2)
+
+    ax2.tick_params(labelbottom=False)
+
+    
 
     axis_labels_0 = closest_words_for_pc(axis[0], model, vocab_df['word'], np.stack(vocab_df[EMBEDDING_MODEL]))
     axis_labels_1  = closest_words_for_pc(axis[1], model, vocab_df['word'], np.stack(vocab_df[EMBEDDING_MODEL]))
@@ -108,11 +117,11 @@ def display_results(df: pd.DataFrame, model, axis: tuple[int], aggregated: pd.Da
         Line2D([0], [0], color=color_map[k], lw=2, label=LEGEND_BLOCK[k])
         for k in color_map
     ]
-
+    
     fig.legend(
         handles=legend_elements,
         loc="lower center",
-        ncol=len(legend_elements),
+        ncol=len(legend_elements) // 2,
         frameon=True,
         bbox_to_anchor=(0.5, -0.12)
     )
@@ -124,8 +133,8 @@ def display_results(df: pd.DataFrame, model, axis: tuple[int], aggregated: pd.Da
 
 
 
-params = bundles.icml2024(nrows=1,ncols=2, column="full") # if you need multiple columns / rows, change in your script
-# params.update({"figure.dpi": 350})
+params = bundles.icml2024(nrows=2, ncols=1) # if you need multiple columns / rows, change in your script
+params.update({"figure.dpi": 350})
 plt.rcParams.update(params)
 
 df['reduced_0'] = reduced[:, 0] 
