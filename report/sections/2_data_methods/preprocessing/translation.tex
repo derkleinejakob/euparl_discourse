@@ -1,12 +1,5 @@
 \textbf{Translation}
-To keep the speeches most comparable in the embedding space, we use English translations instead of the orignal speeches. 
-Until the year X (TODO), the Parllaw dataset includes a machine translation for each speech. The remaining X (TODO) translations were created using Gemini 2.5-flash \citep{gemini_2025}. We tested its translations on a random sample of speeches that had already been translated by Parllaw and checked that 
-% We checked that Gemini \emph{1)} did not re-formulate speeches that were already in English and that \emph{2)} its translations are comparable to Parllaw's  
-% in the embedding space. For this, we tested its translations 
-Gemini \emph{1) } preserved speeches which were already in English
-% \footnote 
-    % {(TODO add quantifier) Since we created translations before extensively cleaning the dataset, some English speeches included bracketed language flags that led to Gemini re-translating the English speeches.
-    % These reformulations are however almost identical to the original speech. Therefore, we accepted those instances where Gemini failed to recognize English texts.} 
-and \emph{2) } created translations whose embeddings are close to Parllaw's for non-English speeches (bootstrapped $0.95$ confidence interval of mean cosine similarity: $0.969$, $n=1001$). 
-Thus, we assume that Gemini's and Parllaw's translations are similar enough to fill in the missing translations with Gemini's, and conduct our analysis under the assumption that all translations stem from the same source. 
-% However, we note that the mixture of two translation approaches might nevertheless introduce a bias to our dataset, that we have to check for. (TODO: did we check for that)
+% until Nov 2012 EU published translations themselves https://html-preview.github.io/?url=https://github.com/ChRauh/OPTED-WP5-Translation/blob/main/PLS-TranslationDocumentation.html
+% Parrlaw translated until April 18 2019
+We use English translations to control for potential biases introduced by using speeches of different languages. 
+The European Parliament provided speech translations until 2012, which was extended with machine translations by Parllaw for speeches until 2019 \citep{rauh_documentation_2023}. We filled in the remaining translations using \emph{Gemini 2.5-flash} \citep{gemini_2025}. We tested its translations on a random sample of speeches that had been machine-translated by Parllaw and checked that Gemini \emph{1) } preserved speeches which were already in English and \emph{2) } created translations with embeddings close to Parllaw's for non-English speeches (mean cosine similarity: $0.969$, $n=1001$; bootstrapped $0.95$ confidence interval). Thus, we assume that Gemini's and Parllaw's translations are similar enough to fill in the missing translations with Gemini's.
