@@ -26,9 +26,5 @@ if __name__ == "__main__":
     params = bundles.icml2024() # if you need multiple columns / rows, change in your script
     params.update({"figure.dpi": 350})
     plt.rcParams.update(params)
-    # jakobs version:
-    # inspired by Prof. Hennig's preamble: set matplotlib's default to Uni Tübingen's params
-    # plt.rcParams.update(bundles.beamer_moml())
-    # plt.rcParams.update({"figure.dpi": 350})
 
     os.environ["PREAMBLE_RUN"] = "True"
