@@ -1,5 +1,4 @@
-
-\textbf{Removing Commentary} (TODO)
+\subsubsection{Removing Commentary} (TODO)
 We detect high amount of superfluous commentary in transliterated speeches:  markers of the original language, background incidents, and procedural notes. These markers might be source of unwanted bias, which we want to avoid. Fortunately they are predominantly located within parentheses and can be easily removed with rule-based methods. We also observe substantial redundency in the openning and closing sections of the speeches.
 These sections follow similar rhetorical structures but exhibit substantial lexical variation. To identify low-impact sentences we use TF-IDF algorithm to score the amount of information they contain.
 We construct separate corpora for opening and closing sentences, and an average TF-IDF score is computed for each sentence. Two independent raters annotated a sample of 100 low-scoring sentences for informational relevance. We then fit a logistic regression linking TF–IDF score percentiles to these annotations and used the model to estimate the threshold required to achieve 95\% classification accuracy.
