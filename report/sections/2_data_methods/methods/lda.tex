@@ -1,9 +1,11 @@
 
 \subsubsection{Topic Modelling with LDA}
-To identify how parties talk about migration, we first have to assign speeches to a semantic topic.
-For this, we use Latent Dirichlet Allocation \emph{(LDA)} [TODO: source]. 
-% What is LDA 
-LDA fits a probabilistic model on a corpus of documents (here: our parliamentary speeches) and identifies a fixed number of topics in the corpus which are characterized by words that have a high probability of appearing in the topic. For each speech and topic, it assigns a probability of that speech belonging to the topic. 
+
+To isolate migration-related discourse from all speeches, we use \emph{Latent Dirichlet Allocation} \citep{blei2003latent}. LDA models each speech as a probabilistic mixture of a predefined number of topics, where each topic is defined by a distribution over words. For every speech, the model estimates the probability of belonging to each topic.
+
+We evaluated multiple model specifications and selected the model based on topic coherence (final score: 0.56) and manual inspection of topic interpretability. The selected model comprises 30 topics, one of which assigned highest probabilities to the words \emph{refugee}, \emph{border}, and \emph{migration}. Speeches were categorized as migration-related if they had an above-threshold probability for this topic. 
+
+The threshold was determined by two raters sampling 100 speeches from the probability range where the cutoff was expected based on initial tests (prob = [0.20, 0.35]) and classifying whether they were migration-related. We then used receiver operating characteristic (ROC) analysis to identify the threshold that minimized the difference between true and false positive rates (prob = 0.25).
 
 % Why LDA and not something else?
 % (TODO why LDA?)
@@ -14,13 +16,9 @@ LDA fits a probabilistic model on a corpus of documents (here: our parliamentary
 % For example, if a topic had high probabilities for the words "fish", "net", "water", then documents covering "fishing" would (under LDA's assumptions) have a high probability of being labelled as that topic. 
 % Our LDA
 
-We compared different model fits and chose one based on the its coherence score (final coherence: XX) and throguh manually inspecting the fidelity of the created topics. Our final model contains 30 topics, one of which assigned highest probabilities for the words X, Y, Z (TODO words), which we call "migration topic".
 
 % We tested different parameters (numer of topics, number of iterations over the dataset) and compared 
 % the resulting topic coherence (TODO explanation) and the fidelity of the topics through manual inspection.
 % Our final model contains 30 topics (for 10 iterations) --- one of which assigns highest probabilities to the words X, Y, Z (TODO words), which we call "migration topic".
 
 % threshold
-To determine an appropriate migration-topic probability threshold, two raters sampled 100 speeches from the probability range where the cutoff was expected based on initial tests (prob = [0.20, 0.35]) and classified whether they were migration-related. We then used receiver operating characteristic (ROC) analysis to identify the threshold that minimized the difference between true and false positive rates (prob = 0.25).
-
-(TODO finish this)
