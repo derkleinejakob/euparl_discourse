@@ -70,7 +70,7 @@ fig, axes = plt.subplots(2, 3, gridspec_kw={'hspace': 0})
 for i, category in enumerate(selected_categories):
     ax = axes[0, i]
     sns.lineplot(data=df, x='year_x', y=category, hue='block_x', markers=False, 
-                 palette=const.COLOR_MAP_BLOCK, ax=ax, errorbar='ci', alpha=0.75)
+                 palette=const.COLOR_MAP_BLOCK, ax=ax, errorbar='ci', err_kws={"alpha": 0.15})
     ax.set_title(category_labels[category])
     ax.set_xlabel("")
     ax.set_xlim(2014, 2024)
