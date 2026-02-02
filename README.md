@@ -75,3 +75,6 @@ The Parllaw speech dataset was first [transformed to .csv-files](src/transform_p
 - Agenda Setting: To explore whether parties engage in 'agenda setting', we explored when they mention migration, and in which contexts. Find the analysis [here](experiments/q2_agenda_setting.ipynb).
 - Dimensionality Reduction: To discern how party ideology is encoded in the semantic vector space and how it evolves in the last decade, we try out different dimensionality reduction methods and display our findings. Find the analysis [here (PCA)](experiments/q3_1_pca_interpretation.ipynb), [here (Temporal Trends)](experiments/q3_2_yearly_analysis.ipynb), [here (PLS)](experiments/q3_3_pls.ipynb), [here (Bootstrapping)](experiments/q3_3_x_bootstrapped_pls.ipynb) and [here (PLS stability)](experiments/q3_4_plsda_stability.ipynb)
 - Semantic Search: We analyzed whether parties reproduce previously found narratives surrounding migration. Find the analysis [here](experiments/q4_semantic_search.ipynb).
+
+
+*Note: Due to issues with using LFS, we switched to this repository. If interested in older versions of the project, refer to the [old repository](https://github.com/derkleinejakob/dataliteracy25).*

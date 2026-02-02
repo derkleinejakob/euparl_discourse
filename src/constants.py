@@ -7,18 +7,29 @@ PATH_DF_TRANSLATION_TEST = "data/translation/df_translation_test.parquet"
 
 PATH_ALL_SPEECHES = "data/final/full.parquet" # formerly known as final.parquet
 PATH_MIGRATION_SPEECHES = "data/final/migration.parquet" 
-PATH_MIGRATION_CHES = "data/final/migration_with_ches_exact.parquet" # this should now be:
-# PATH_MIGRATION_CHES = "data/final/migration_with_CHES_exact.parquet"
-# also add these
-# PATH_MIGRATION_CHES_FALLBACK = "data/final/migration_with_CHES_fallback.parquet"
-# PATH_MIGRATION_CHES_INTERPOLATED = "data/final/migration_with_CHES_interpolated.parquet"
+
+PATH_MIGRATION_CHES = "data/final/migration_with_ches_exact.parquet"
+PATH_MIGRATION_CHES_FALLBACK = "data/final/migration_with_ches_fallback.parquet"
+PATH_MIGRATION_CHES_INTERPOLATED = "data/final/migration_with_ches_interpolated.parquet"
+
 PATH_MIGRATION_SPEECHES_EMBEDDED = "data/final/migration_with_embeddings.parquet" # formerly known as SPEECH_EMBEDDINGS.parquet
 PATH_MIGRATION_SPEECHES_SIMILARITIES = "data/final/migration_with_similarities.parquet"
 PATH_VOCAB_EMBEDDED = "data/final/vocab_embeddings.parquet" # formerly known as VOCAB_EMBEDDGINGS.parquet
 PATH_MODEL = "data/lda/final_model/model.model"
 
+# filepaths for original & intermediate data of CHES merging pipeline ("experiments/pre5_..."")
+PATH_ORIGINAL_CHES_RAW_CSV = "data/original/ches/1999-2024_CHES_dataset_means.csv"
+PATH_INTERMED_CHES_50_CHES_META = "data/intermed/ches/fin_ches_meta.parquet"
+PATH_INTERMED_CHES_50_CHES_RAW = "data/intermed/ches/fin_1999-2024_CHES_dataset_means.parquet"
+PATH_INTERMED_CHES_51_MIG_W_META = "data/intermed/ches/fin_migration_enriched_meta.parquet"
+PATH_INTERMED_CHES_511_FETCHED_MEP = "data/intermed/ches/intermed_fetched_mep_from_api.parquet"
+PATH_INTERMED_CHES_512_FETCHED_MEP_META = "data/intermed/ches/intermed_fetched_mep_meta_from_api.parquet"
+PATH_INTERMED_CHES_52_NAT_MEMBER = "data/intermed/ches/fin_national_memberships.parquet"
+PATH_INTERMED_CHES_53_ENRICHED_MEMBER = "data/intermed/ches/fin_memberships_enriched_with_ches.parquet"
+PATH_INTERMED_CHES_54_MIG_W_CHES_META = "data/intermed/ches/fin_migration_enriched_with_ches_meta.parquet"
+
 COLOR_MAP_PARTY = {
-    "PSE/S\&D": "#E41A1C",
+    "PSE/S\&D": "#642627",
     
     "Greens/EFA": "#32CD32",
 
