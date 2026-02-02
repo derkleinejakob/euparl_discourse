@@ -104,36 +104,41 @@ params = bundles.icml2024(nrows=2,ncols=1)
 params.update({"figure.dpi": 350, "figure.figsize": (params["figure.figsize"][0], 3.2)})
 plt.rcParams.update(params)
 
+def plot_panel1(ax1_combined): 
+    # panel 1
+    df_pivot.plot.area(cmap="viridis", alpha=0.75, ax=ax1_combined)
+    ax1_combined.set_ylabel('Proportion of Speeches')
+    ax1_combined.set_xlabel('')
+    ax1_combined.set_xticklabels([])
+
+    # ax1_combined.set_xticklabels([])
+    handles, labels = ax1_combined.get_legend_handles_labels()
+    ax1_combined.legend(handles[::-1], labels[::-1], loc='upper left', frameon=True, fancybox=True, shadow=False)
+    ax1_combined.set_xlim(df_dominant['year'].min(), df_dominant['year'].max())
+    ax1_combined.yaxis.set_major_formatter(plt.FuncFormatter(lambda y, _: f'{y:.0%}'.replace('%', r'\%')))
+    ax1_combined.set_axisbelow(True)
+    ax1_combined.grid(alpha=0.3)
+    ax1_combined.spines['top'].set_visible(False)
+    ax1_combined.spines['right'].set_visible(False)
+
+def plot_panel2(ax2_combined): 
+    # panel 2
+    plot_migration_by_block_written(df_migration, 'n_speeches', ax2_combined, const.LEGEND_BLOCK_LONG)
+    ax2_combined.set_xlabel("")
+    ax2_combined.set_ylabel('Number of Migration Speeches')
+    ax2_combined.set_axisbelow(True)
+    ax2_combined.grid(alpha=0.3)
+    ax2_combined.set_xlim(2014, 2024)
+    ax2_combined.spines['top'].set_visible(False)
+    ax2_combined.spines['right'].set_visible(False)
+
+    ax1_combined.yaxis.set_label_coords(-0.12, 0.5)
+    ax2_combined.yaxis.set_label_coords(-0.12, 0.5)
+
+
 fig, (ax1_combined, ax2_combined) = plt.subplots(2, 1)
-# panel 1
-df_pivot.plot.area(cmap="viridis", alpha=0.75, ax=ax1_combined)
-ax1_combined.set_ylabel('Proportion of Speeches')
-ax1_combined.set_xlabel('')
-ax1_combined.set_xticklabels([])
-
-# ax1_combined.set_xticklabels([])
-handles, labels = ax1_combined.get_legend_handles_labels()
-ax1_combined.legend(handles[::-1], labels[::-1], loc='upper left', frameon=True, fancybox=True, shadow=False)
-ax1_combined.set_xlim(df_dominant['year'].min(), df_dominant['year'].max())
-ax1_combined.yaxis.set_major_formatter(plt.FuncFormatter(lambda y, _: f'{y:.0%}'.replace('%', r'\%')))
-ax1_combined.set_axisbelow(True)
-ax1_combined.grid(alpha=0.3)
-ax1_combined.spines['top'].set_visible(False)
-ax1_combined.spines['right'].set_visible(False)
-# panel 2
-plot_migration_by_block_written(df_migration, 'n_speeches', ax2_combined, const.LEGEND_BLOCK_LONG)
-ax2_combined.set_xlabel("")
-ax2_combined.set_ylabel('Number of Migration Speeches')
-ax2_combined.set_axisbelow(True)
-ax2_combined.grid(alpha=0.3)
-ax2_combined.set_xlim(2014, 2024)
-ax2_combined.spines['top'].set_visible(False)
-ax2_combined.spines['right'].set_visible(False)
-
-ax1_combined.yaxis.set_label_coords(-0.12, 0.5)
-ax2_combined.yaxis.set_label_coords(-0.12, 0.5)
-
-
+plot_panel1(ax1_combined)
+plot_panel2(ax2_combined)
 # add arrow annotation
 # ax1_combined.annotate(
 #     '', 
@@ -145,3 +150,8 @@ ax2_combined.yaxis.set_label_coords(-0.12, 0.5)
 # fig.tight_layout()
 fig.savefig("report/fig/fig1_lda.pdf")
 
+# for readme
+fig, (ax1_combined, ax2_combined) = plt.subplots(1, 2, figsize=(7, 2))
+plot_panel1(ax1_combined)
+plot_panel2(ax2_combined)
+fig.savefig("report/fig/fig1_lda.png")
