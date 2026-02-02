@@ -1,12 +1,17 @@
 from tueplots.constants.color import rgb
 
-PATH_RAW_DATA = "data/intermed/speech_output.csv"
+PATH_RAW_DATA = "data/intermed/speech_output.csv" # this should now be:
+# PATH_RAW_DATA = "data/intermed/parl_law_speech_csv/speech_output.csv"
 PATH_TRANSLATED_DATA = "data/intermed/speech_translated.parquet"
 PATH_DF_TRANSLATION_TEST = "data/translation/df_translation_test.parquet"
 
 PATH_ALL_SPEECHES = "data/final/full.parquet" # formerly known as final.parquet
 PATH_MIGRATION_SPEECHES = "data/final/migration.parquet" 
-PATH_MIGRATION_CHES = "data/final/migration_with_ches_exact.parquet"
+PATH_MIGRATION_CHES = "data/final/migration_with_ches_exact.parquet" # this should now be:
+# PATH_MIGRATION_CHES = "data/final/migration_with_CHES_exact.parquet"
+# also add these
+# PATH_MIGRATION_CHES_FALLBACK = "data/final/migration_with_CHES_fallback.parquet"
+# PATH_MIGRATION_CHES_INTERPOLATED = "data/final/migration_with_CHES_interpolated.parquet"
 PATH_MIGRATION_SPEECHES_EMBEDDED = "data/final/migration_with_embeddings.parquet" # formerly known as SPEECH_EMBEDDINGS.parquet
 PATH_MIGRATION_SPEECHES_SIMILARITIES = "data/final/migration_with_similarities.parquet"
 PATH_VOCAB_EMBEDDED = "data/final/vocab_embeddings.parquet" # formerly known as VOCAB_EMBEDDGINGS.parquet
