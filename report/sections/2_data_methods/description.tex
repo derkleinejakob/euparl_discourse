@@ -5,7 +5,7 @@ We use the ParlLawSpeech dataset \citep{SDN-10.7802-2824}, which contains the fu
 
 To contextualize and validate our findings around rhetorical patterns, we draw on expert-coded party positions from the Chapel Hill Expert Survey (CHES; \citealp{rovny_CHES_2024}), which provides repeated cross-sectional estimates of party ideology (e.g.\ left-right spectrum) and policy positions (e.g.\ on immigration) using standardized scales. CHES items were rescaled to a common 0–10 metric where necessary, following \citet{adams2014voters}. To link the CHES ratings to our speech data, we enriched the corpus with speaker-level metadata from the EP’s Open Data Portal, including national party affiliation at the time of speech delivery. 
 
-While parliamentary speeches capture how parties frame political issues, CHES offers an independent, expert-based assessment of ideological positioning, allowing us to validate patterns in political discourse against an external benchmark. We use ratings from the 2014, 2019, and 2024 surveys and compute correlations with semantic speech measures from the corresponding years.
+While parliamentary speeches capture how parties frame political issues, CHES offers an independent, expert-based assessment of ideological positioning, allowing us to validate patterns in political discourse against an external benchmark. We use ratings from 2014, 2019, and 2024 and compute correlations with semantic speech measures.
 
 % Dennis' original version
 % To analyze migration discourse in the EP, we rely on the \textit{ParlLawSpeech} (PLS) dataset \citep{SDN-10.7802-2824}, providing us with a large-scale corpus of more than 500,000
@@ -27,9 +27,9 @@ While parliamentary speeches capture how parties frame political issues, CHES of
 %Importantly, CHES scores are not used to label or classify individual speeches, but instead serve as contextual variables against which aggregated 
 %speech patterns can be compared.
 
-In 2015 and 2016, the total number of speeches increases sharply (over 50,000 per year), compared to an average of 10,098 in other years (\textit{SD} = 2,724), reflecting 
-a shift from numerous, shorter to fewer and longer speeches over time.
-This phenomenon is largely explained by changes in parliamentary procedure adopted around the end of 2016 \citep{tremblay2024open}, most notably the discontinuation of short written statements expressing opinions on specific issues. Their removal largely normalizes annual speech counts. For the main analyses, we retain written declarations, as they often contain substantive party positions. Because such declarations could be co-signed by multiple Members and thus appear duplicated in the dataset, we retain only the first instance.
+In 2015 and 2016, the total number of speeches increases sharply (over 50,000 per year), compared to an average of 10,098 in other years (\textit{SD} = 2,724). %, reflecting a shift from numerous, shorter to fewer and longer speeches over time.
+This phenomenon is explained by changes in parliamentary procedure adopted at the end of 2016 \citep{tremblay2024open}, most notably the discontinuation of short written statements expressing opinions on specific issues. %Their removal largely normalizes annual speech counts.
+For the main analyses, we retain written declarations, as they often contain substantive party positions. Because such declarations could be co-signed by multiple Members and thus appear duplicated in the dataset, we retain only the first instance.
 
 Due to the fragmentation of right-wing forces in the EP and realignment across legislative terms, parliamentary groups were sorted into six ideological blocks following \citet{kaiser_seventy_2023}, see \Cref{fig:fig1_lda}.
 
