@@ -98,7 +98,7 @@ def plot_migration_by_block_written(df_in, value_col, ax, legend_labels, legend_
 
     return pivot
 
-# ------- build figure ------------------------------------------------------
+# ------- build figure --------------------------------------------
 
 params = bundles.icml2024(nrows=2,ncols=1) 
 params.update({"figure.dpi": 350, "figure.figsize": (params["figure.figsize"][0], 3.2)})
@@ -109,6 +109,8 @@ fig, (ax1_combined, ax2_combined) = plt.subplots(2, 1)
 df_pivot.plot.area(cmap="viridis", alpha=0.75, ax=ax1_combined)
 ax1_combined.set_ylabel('Proportion of Speeches')
 ax1_combined.set_xlabel('')
+ax1_combined.set_xticklabels([])
+
 # ax1_combined.set_xticklabels([])
 handles, labels = ax1_combined.get_legend_handles_labels()
 ax1_combined.legend(handles[::-1], labels[::-1], loc='upper left', frameon=True, fancybox=True, shadow=False)

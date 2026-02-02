@@ -19,7 +19,7 @@ selected_categories = [
 category_labels = {
     "immigrants_as_threat": "Supernarrative: \n \\textit{Immigration is a Threat}",
     "immigrants_as_problematic": "Supernarrative: \n \\textit{Immigrants' Culture is Problematic}",
-    "immigrants_humanitarian": "Comparison narrative: \n \\textit{Humanitarian Principles in Migration}"
+    "immigrants_humanitarian": "Control narrative: \n \\textit{Humanitarian Principles in Migration}"
 }
 
 # filter df to only CHES years and compute correlations
@@ -70,7 +70,7 @@ fig, axes = plt.subplots(2, 3, gridspec_kw={'hspace': 0})
 for i, category in enumerate(selected_categories):
     ax = axes[0, i]
     sns.lineplot(data=df, x='year_x', y=category, hue='block_x', markers=False, 
-                 palette=const.COLOR_MAP_BLOCK, ax=ax, errorbar='ci', alpha=0.75)
+                 palette=const.COLOR_MAP_BLOCK, ax=ax, errorbar='ci', err_kws={"alpha": 0.15})
     ax.set_title(category_labels[category])
     ax.set_xlabel("")
     ax.set_xlim(2014, 2024)
