@@ -9,7 +9,7 @@ $\alpha\mbox{*} = 0.05 / m$). All models show significant distributional differe
 To best capture political orientation in the embeddings, we selected the final model based on (i) intra- and interparty cosine similarities, (ii) predictive performance of a logistic regression model with political affiliation as target variable, and (iii) K-means clustering quality measured by homogenity and completeness with respect to party membership. Based on this, we selected EmbeddingGemma %google/embeddinggemma-300m 
 \citep{embedding_gemma_2025} to create the emebddings. 
 
-Dimensionality reduction has been used to study ideological change over time and to recover latent political dimensions\citep{Rheault2020-mr}. % NOTE: I added that it was PCA because to me it was not really understandable - I hope it makes sense 
+Dimensionality reduction has been used to study ideological change over time and to recover latent political dimensions \citep{Rheault2020-mr}. % NOTE: I added that it was PCA because to me it was not really understandable - I hope it makes sense 
 Exploratory PCA showed that, although party affiliations is present, it is not dominant in the overall variance of the embedding space. 
 To identify a subspace in which political and ideological differences become more salient, we employ Partial Least Squares (PLS), which extracts directions maximally associated with party labels. To mitigate and quantify temporal bias, we excluded written speeches concentrated in 2015 and 2016 and % fit the PLS model on the remaining 5,433 observations, 
 evaluate the model using a temporally adapted leave-one-out cross-validation strategy \citep{roberts_temporal_2017}.
