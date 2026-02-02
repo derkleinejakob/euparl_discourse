@@ -112,8 +112,6 @@ def display_results(df: pd.DataFrame, model, axis: tuple[int], aggregated: pd.Da
     plot_pca_axis_development(df, 1, target_var, axis_labels_1, color_map, ax3)
     ax3.set_ylim(-6.9, 4.9)
 
-    # handles, labels = ax2.get_legend_handles_labels()
-    # labels = [LEGEND_BLOCK[label] for label in labels]
     from matplotlib.lines import Line2D
 
     legend_elements = [
@@ -123,11 +121,11 @@ def display_results(df: pd.DataFrame, model, axis: tuple[int], aggregated: pd.Da
     
     fig.legend(
         handles=legend_elements,
-        loc="lower center",
+        loc="upper center",
         ncol=len(legend_elements) // 2,
         frameon=True,
-        bbox_to_anchor=(0.5, -0.12)    
-        ).set_visible(False) # hide the legend in the hopes for a figure beside it explaining the colors
+        bbox_to_anchor=(0.5, 1.1)    
+        ) # hide the legend in the hopes for a figure beside it explaining the colors
 
     # fig.subplots_adjust(bottom=0.22)
 
@@ -138,7 +136,7 @@ def display_results(df: pd.DataFrame, model, axis: tuple[int], aggregated: pd.Da
 
 
 params = bundles.icml2024(nrows=2, ncols=1) # if you need multiple columns / rows, change in your script
-params.update({"figure.dpi": 350, "figure.figsize": (params["figure.figsize"][0], 3.2)})
+params.update({"figure.dpi": 350, "figure.figsize": (params["figure.figsize"][0], 3)})
 plt.rcParams.update(params)
 
 df['reduced_0'] = reduced[:, 0] 
