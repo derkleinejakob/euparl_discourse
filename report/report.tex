@@ -31,35 +31,21 @@
 \definecolor{TUorange}{RGB}{210,150,0}
 \definecolor{TUbrown}{RGB}{145,105,70}
 
-% hyperref makes hyperlinks in the resulting PDF.
-% If your build breaks (sometimes temporarily if a hyperlink spans a page)
-% please comment out the following usepackage line and replace
-% \usepackage{icml2023} with \usepackage[nohyperref]{icml2023} above.
 \usepackage{hyperref}
 
-
-% Attempt to make hyperref and algorithmic work together better:
 \newcommand{\theHalgorithm}{\arabic{algorithm}}
 
 \usepackage[accepted]{icml2025}
 
-% For theorems and such
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{mathtools}
 \usepackage{amsthm}
 
-% if you use cleveref..
 \usepackage[capitalize,noabbrev]{cleveref}
 
-% Todonotes is useful during development; simply uncomment the next line
-%    and comment out the line below the next line to turn off comments
-%\usepackage[disable,textsize=tiny]{todonotes}
 \usepackage[textsize=tiny]{todonotes}
 
-
-% The \icmltitle you define below is probably too long as a header.
-% Therefore, a short form for the running title is supplied here:
 \icmltitlerunning{Project Report Template for Data Literacy 2025}
 
 \begin{document}
@@ -67,19 +53,6 @@
 \twocolumn[
 \icmltitle{Deconstructing a Decade of Migration Discourse in the European Parliament}
 
-% It is OKAY to include author information, even for blind
-% submissions: the style file will automatically remove it for you
-% unless you've provided the [accepted] option to the icml2023
-% package.
-
-% List of affiliations: The first argument should be a (short)
-% identifier you will use later to specify author affiliations
-% Academic affiliations should list Department, University, City, Region, Country
-% Industry affiliations should list Company, City, Region, Country
-
-% You can specify symbols, otherwise they are numbered in order.
-% Ideally, you should not use this facility. Affiliations will be numbered
-% in order of appearance and this is the preferred way.
 \icmlsetsymbol{equal}{*}
 
 \begin{icmlauthorlist}
@@ -90,41 +63,13 @@
 \icmlauthor{Quirin Unterguggenberger}{equal}
 \end{icmlauthorlist}
 
-% fill in your matrikelnummer, email address, degree, for each group member
-% \icmlaffiliation{first}{Matrikelnummer 12345678, MSc Machine Learning}
-% \icmlaffiliation{second}{Matrikelnummer 12345678, MSc Computer Science}
-% \icmlaffiliation{third}{Matrikelnummer 12345678, MSc Media Informatics}
-% \icmlaffiliation{fourth}{Matrikelnummer 12345678, MSc Medical Informatics}
-% \icmlaffiliation{fifth}{Matrikelnummer 12345678, MSc QDS}
-
-% put your email addresses here. You can use initials to save space, 
-% e.g. if you are called Max Mustermann, you can use \icmlcorrespondingauthor{MM}{max.mustermann@uni-tuebingen.de}
-% DO USE YOUR UNIVERSITY EMAIL ADDRESS!
-
-% for the Data Literacy report, to save space, you can here list the student email address of one author, who is willing to be contacted about this work in the future (e.g. in case we would like to use your report as an example for future course iterations)
 \icmlcorrespondingauthor{GG}{giorgi.gogelashvili@student.uni-tuebingen.de} 
-% \icmlcorrespondingauthor{Initials2}{first2.last2@uni-tuebingen.de}
-% \icmlcorrespondingauthor{Initials3}{first3.last3@uni-tuebingen.de}
-% \icmlcorrespondingauthor{Initials4}{first4.last4@uni-tuebingen.de}
-% \icmlcorrespondingauthor{Initials5}{first5.last5@uni-tuebingen.de}
 
-% You may provide any keywords that you
-% find helpful for describing your paper; these are used to populate
-% the "keywords" metadata in the PDF but will not be shown in the document
 \icmlkeywords{Machine Learning, ICML}
 
 \vskip 0.3in
 ]
 
-% this must go after the closing bracket ] following \twocolumn[ ...
-
-% This command actually creates the footnote in the first column
-% listing the affiliations and the copyright notice.
-% The command takes one argument, which is text to display at the start of the footnote.
-% The \icmlEqualContribution command is standard text for equal contribution.
-% Remove it (just {}) if you do not need this facility.
-
-%\printAffiliationsAndNotice{}  % leave blank if no need to mention equal contribution
 \printAffiliationsAndNotice{\icmlEqualContribution} % otherwise use the standard text.
 
 \input{sections/abstract.tex}
@@ -133,31 +78,11 @@
 
 \section{Data and Methods}\label{sec:methods}
 
-    % In this section, describe \emph{what you did}. Roughly speaking, explain what data you worked with, how or from where it was collected, it's structure and size. Explain your analysis, and any specific choices you made in it. Depending on the nature of your project, you may focus more or less on certain aspects. If you collected data yourself, explain the collection process in detail. If you downloaded data from the net, show an exploratory analysis that builds intuition for the data, and shows that you know the data well. If you are doing a custom analysis, explain how it works and why it is the right choice. If you are using a standard tool, it may still help to briefly outline it. Cite relevant works. You can use the \verb|\citep| and \verb|\citet| commands for this purpose \citep{mackay2003information}.
-
-    % This is the template for a figure from the original ICML submission pack. In lecture 10 we will discuss plotting in detail.
-    % Refer to this lecture on how to include figures in this text.
-    % 
-    % \begin{figure}[ht]
-    % \vskip 0.2in
-    % \begin{center}
-    % \centerline{\includegraphics[width=\columnwidth]{icml_numpapers}}
-    % \caption{Historical locations and number of accepted papers for International
-    % Machine Learning Conferences (ICML 1993 -- ICML 2008) and International
-    % Workshops on Machine Learning (ML 1988 -- ML 1992). At the time this figure was
-    % produced, the number of accepted papers for ICML 2008 was unknown and instead
-    % estimated.}
-    % \label{icml-historical}
-    % \end{center}
-    % \vskip -0.2in
-    % \end{figure}
-
     \subsection{Dataset description}
     \input{sections/2_data_methods/description.tex}
 
     \subsection{Data preprocessing}
 
-    % \input{sections/2_data_methods/preprocessing/duplicates.tex}
     \input{sections/2_data_methods/preprocessing/translation.tex}
 
     \input{sections/2_data_methods/preprocessing/commentary.tex}
@@ -200,7 +125,3 @@ All code for this project, an interactive LDA plot, and instructions for data re
 \bibliographystyle{icml2025}
 
 \end{document}
-
-
-% This document was modified from the files available at https://icml.cc/Conferences/2025/AuthorInstructions
-% the full copyright notice is available within the file icml2025.sty
