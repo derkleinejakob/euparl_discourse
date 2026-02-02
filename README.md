@@ -30,7 +30,7 @@ This repository contains the code to reproduce the analyses of the research proj
 
   <tr>
     <td width="30%">
-        <!-- <img src="report/fig/fig4.png" alt=""> -->
+        <img src="report/fig/fig4_search.png" alt="Plot showing semantic similarities to migration narratives">
     </td>
     <td>
       <p>
