@@ -58,9 +58,9 @@ def plot_pca_axis_development(df: pd.DataFrame, axis: int,  target_var: str,
 
 
     sns.lineplot(data=df, x='year', y=f"reduced_{axis}",  hue=target_var, palette=color_map, ax=ax, legend=False,
-                  err_kws={"alpha": 0.08}, linewidth=1.8)
+                  err_kws={"alpha": 0.15}, linewidth=1.8)
     ax.set_xlabel("")
-    ax.set_ylabel(f"PLS {axis + 1}")
+    ax.set_ylabel(f"PLS axis {axis + 1}")
     ax.spines.right.set_visible(False)
     ax.spines.top.set_visible(False)
     ax.tick_params(top=False, right=False)
@@ -78,9 +78,9 @@ def plot_pca_axis_development(df: pd.DataFrame, axis: int,  target_var: str,
     props = dict(boxstyle='round', facecolor="white", alpha=0.85,  edgecolor="0.7",)
 
     # label for negative axis: 
-    ax.text(0.02, 0.08,  f"{ax_label_neg}",  transform=ax.transAxes, va="bottom", ha="left", horizontalalignment="left", bbox=props)
+    ax.text(0.02, 0.05,  f"{ax_label_neg}",  transform=ax.transAxes, va="bottom", ha="left", horizontalalignment="left", bbox=props, fontsize="small")
     # label for positive axis: 
-    ax.text(0.02, 0.9, f"{ax_label_pos}", transform=ax.transAxes, va="top", ha="left",  horizontalalignment="left", bbox=props)
+    ax.text(0.02, 0.95, f"{ax_label_pos}", transform=ax.transAxes, va="top", ha="left",  horizontalalignment="left", bbox=props, fontsize="small")
     ax.grid()
     # ax.legend(loc="lower left")
 
@@ -103,11 +103,14 @@ def display_results(df: pd.DataFrame, model, axis: tuple[int], aggregated: pd.Da
     axis_labels_1  = closest_words_for_pc(axis[1], model, vocab_df['word'], np.stack(vocab_df[EMBEDDING_MODEL]))
 
     display_axis_semantics([(axis_labels_0), 
-                            (axis_labels_1)])
+                            (axis_labels_1)])    
 
     # plot_aggregated_yearly_data(aggregated, reduced_embeddings, target_var, color_map, ax1)
     plot_pca_axis_development(df, 0, target_var,  axis_labels_0, color_map, ax2)
+    # set ylim
+    ax2.set_ylim(-5, 6.5)
     plot_pca_axis_development(df, 1, target_var, axis_labels_1, color_map, ax3)
+    ax3.set_ylim(-6.9, 4.9)
 
     # handles, labels = ax2.get_legend_handles_labels()
     # labels = [LEGEND_BLOCK[label] for label in labels]
@@ -123,8 +126,9 @@ def display_results(df: pd.DataFrame, model, axis: tuple[int], aggregated: pd.Da
         loc="lower center",
         ncol=len(legend_elements) // 2,
         frameon=True,
-        bbox_to_anchor=(0.5, -0.12)
-    )
+        bbox_to_anchor=(0.5, -0.12)    
+        ).set_visible(False) # hide the legend in the hopes for a figure beside it explaining the colors
+
     # fig.subplots_adjust(bottom=0.22)
 
     
