@@ -3,7 +3,7 @@
 
 To isolate migration-related discourse from all speeches, we use \emph{Latent Dirichlet Allocation} \citep{blei2003latent}. LDA models each speech as a probabilistic mixture of a predefined number of topics, where each topic is defined by a distribution over words. For every speech, the model estimates the probability of belonging to each topic.
 
-We evaluated multiple model specifications and selected the model based on topic coherence (final score: 0.56) and manual inspection of topic interpretability. The selected model comprises 30 topics, one of which assigned highest probabilities to the words \emph{refugee}, \emph{border}, and \emph{migration}. Speeches were categorized as migration-related if they had an above-threshold probability for this topic ($n = 9705$).
+We evaluated multiple model specifications and selected the model based on topic coherence (final score: $0.56$) and manual inspection of topic interpretability. The selected model comprises 30 topics, one of which assigned highest probabilities to the words \emph{refugee}, \emph{border}, and \emph{migration}. Speeches were categorized as migration-related if they had an above-threshold probability for this topic ($n = 9705$).
 
 The threshold was determined by two raters sampling 100 speeches from the probability range where the cutoff was expected based on initial tests %([0.20, 0.35])
 and classifying whether they were migration-related. Using receiver operating characteristic analysis, we identified the threshold that minimized the difference between true and false positive rates. %(prob = 0.25).
