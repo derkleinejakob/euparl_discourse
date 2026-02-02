@@ -1,22 +1,59 @@
 # Deconstructing a Decade of Migration Discourse in the European Parliament
 This repository contains the code to reproduce the analyses of the research project "Deconstructing a Decade of Migration Discourse in the European Parliament", conducted for Data Literacy by Prof. Hennig in the winter term 2025/26. 
 
-## TLdR: Findings 
-### Q1: Quantifying Migration Discourse
-![Plot showing salience of migration discourse](report/fig/fig1_lda.png)
+## Findings 
 
-### Q2: Differentiating Migration Discourse
-![Plot showing axis interpretation of reduced speech embeddings](report/fig/fig3.png)
+<table>
+  <tr>
+    <td>
+      <a href="report/fig/fig1_lda.png">
+        <img src="report/fig/fig1_lda.png" alt="Plot showing salience of migration discourse" width="350">
+      </a>
+    </td>
+    <td>
+      <p>
+        <strong>Quantifying Migration Discourse</strong><br>
+        <!-- TODO: add description here -->
+      </p>
+    </td>
+  </tr>
 
-### Q3: Migration Narratives 
+  <tr>
+    <td>
+      <a href="report/fig/fig3.png">
+        <img src="report/fig/fig3.png" alt="Plot showing axis interpretation of reduced speech embeddings" width="350">
+      </a>
+    </td>
+    <td>
+      <p>
+        <strong>Differentiating Migration Discourse</strong><br>
+        <!-- TODO: add description here -->
+      </p>
+    </td>
+  </tr>
+
+  <tr>
+    <td>
+      <!-- <a href="report/fig/fig4.png"> -->
+        <!-- <img src="report/fig/fig4.png" alt="" width="350"> -->
+      </a>
+    </td>
+    <td>
+      <p>
+        <strong>Migration narratives</strong><br>
+        <!-- TODO: add description here -->
+      </p>
+    </td>
+  </tr>
+</table>
 
 
 ## Data 
-The data can be downloaded from this drive [here](https://1drv.ms/f/c/3670b767c48f3a5a/IgBsXCcCz6fkSorwOSCBCmbcAQafr4adbAmXrhAeawosNGU?e=UJoUiq).
+The data can be downloaded from the drive [here](https://1drv.ms/f/c/3670b767c48f3a5a/IgBsXCcCz6fkSorwOSCBCmbcAQafr4adbAmXrhAeawosNGU?e=UJoUiq).
 It contains:
-- initially collected data, on which the preprocessing was employed ('original/...')
-- data, resulting either from various preprocessing steps (and/or being input to further steps in the pipeline) or from exploratory analysis ('intermed/...')
-- the 'final' data, on which the conclusive analysis (and plot generation) was performed ('final/...')
+- Initially collected data, on which the preprocessing was employed ('original/...')
+- Data, resulting either from various preprocessing steps (and/or being input to further steps in the pipeline) or from exploratory analysis ('intermed/...')
+- The 'final' data, on which the conclusive analysis (and plot generation) was performed ('final/...')
 
 
 ### Preprocessing 
