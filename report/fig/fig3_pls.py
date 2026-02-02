@@ -134,7 +134,7 @@ def display_results(df: pd.DataFrame, model, axis: tuple[int], aggregated: pd.Da
 
 
 params = bundles.icml2024(nrows=2, ncols=1) # if you need multiple columns / rows, change in your script
-params.update({"figure.dpi": 350})
+params.update({"figure.dpi": 350, "figure.figsize": (params["figure.figsize"][0], 3.2)})
 plt.rcParams.update(params)
 
 df['reduced_0'] = reduced[:, 0] 
