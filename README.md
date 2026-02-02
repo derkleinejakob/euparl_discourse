@@ -5,7 +5,9 @@ This repository contains the code to reproduce the analyses of the research proj
 
 <table width="100%">
   <tr>
-    <td><img src="report/fig/fig1_lda.png" alt="Plot showing salience of migration discourse"></td>
+    <td width="30%">
+        <img src="report/fig/fig1_lda.png" alt="Plot showing salience of migration discourse">
+    </td>
     <td>
       <p>
         <strong>Quantifying Migration Discourse</strong><br>
@@ -15,7 +17,9 @@ This repository contains the code to reproduce the analyses of the research proj
   </tr>
 
   <tr>
-    <td><img src="report/fig/fig3.png" alt="Plot showing axis interpretation of reduced speech embeddings"></td>
+    <td width="30%">
+        <img src="report/fig/fig3.png" alt="Plot showing axis interpretation of reduced speech embeddings">
+    </td>
     <td>
       <p>
         <strong>Differentiating Migration Discourse</strong><br>
@@ -25,7 +29,7 @@ This repository contains the code to reproduce the analyses of the research proj
   </tr>
 
   <tr>
-    <td>
+    <td width="30%">
         <!-- <img src="report/fig/fig4.png" alt=""> -->
     </td>
     <td>
