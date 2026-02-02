@@ -9,6 +9,8 @@ This repository contains the code to reproduce the analyses of the research proj
 ![Plot showing axis interpretation of reduced speech embeddings](report/fig/fig3.png)
 
 ### Q3: Migration Narratives 
+![Plot showing narrative similarities](report/fig/fig4_search.png)
+
 
 
 ## Data 
