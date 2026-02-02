@@ -1,7 +1,6 @@
 from tueplots.constants.color import rgb
 
-PATH_RAW_DATA = "data/intermed/speech_output.csv" # this should now be:
-# PATH_RAW_DATA = "data/intermed/parl_law_speech_csv/speech_output.csv"
+PATH_RAW_DATA = "data/intermed/speech_output.csv" 
 PATH_TRANSLATED_DATA = "data/intermed/speech_translated.parquet"
 PATH_DF_TRANSLATION_TEST = "data/translation/df_translation_test.parquet"
 
@@ -17,7 +16,7 @@ PATH_MIGRATION_SPEECHES_SIMILARITIES = "data/final/migration_with_similarities.p
 PATH_VOCAB_EMBEDDED = "data/final/vocab_embeddings.parquet" # formerly known as VOCAB_EMBEDDGINGS.parquet
 PATH_MODEL = "data/lda/final_model/model.model"
 
-# filepaths for original & intermediate data of CHES merging pipeline ("experiments/pre5_..."")
+# filepaths for original & intermediate data of CHES prepro/merging pipeline ("preprocessing_checks/pre5_..."")
 PATH_ORIGINAL_CHES_RAW_CSV = "data/original/ches/1999-2024_CHES_dataset_means.csv"
 PATH_INTERMED_CHES_50_CHES_META = "data/intermed/ches/fin_ches_meta.parquet"
 PATH_INTERMED_CHES_50_CHES_RAW = "data/intermed/ches/fin_1999-2024_CHES_dataset_means.parquet"
