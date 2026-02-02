@@ -20,9 +20,9 @@ selected_categories = [
 ]
 
 category_labels = {
-    "immigrants_as_threat": "Supernarrative a: \n \\textit{Immigration is a Threat}",
-    "immigrants_as_problematic": "Supernarrative b: \n \\textit{Immigrants' Culture is Problematic}",
-    "immigrants_humanitarian": "Control narrative: \n \\textit{Humanitarian Principles in Migration}"
+    "immigrants_as_threat": "\\textit{Immigration is a Threat}",
+    "immigrants_as_problematic": "\\textit{Immigrants' Culture is Problematic}",
+    "immigrants_humanitarian": "\\textit{Humanitarian Principles in Migration}"
 }
 
 # get CHES dimensions that were assessed in at least 2 different years
@@ -90,7 +90,7 @@ for i, category in enumerate(selected_categories):
 
 # Bottom row: mini heatmaps
 # Add title for bottom row
-fig.text(0, 0.25, 'Highest \n CHES score \n Correlations', ha='left')
+fig.text(0, 0.27, 'Highest \n CHES score \n Correlations', ha='left')
 
 for i, category in enumerate(selected_categories):
     ax = axes[1, i]
@@ -153,7 +153,7 @@ for i in range(3):
 
 fig.legend(handles=handles, labels=[const.LEGEND_BLOCK[label] for label in labels], 
            loc='upper center', ncol=len(const.ORDER_BLOCK), frameon=True, 
-           bbox_to_anchor=(0.5, 0.92), fancybox=True, shadow=False)
+           bbox_to_anchor=(0.5, 0.95), fancybox=True, shadow=False, framealpha=1.0)
 
 fig.savefig("report/fig/fig4_search.pdf", bbox_inches='tight')
 fig.savefig("report/fig/fig4_search.png", bbox_inches='tight')
