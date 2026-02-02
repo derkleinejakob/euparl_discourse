@@ -10,6 +10,9 @@ from scipy import stats
 # import data
 df = pd.read_parquet(const.PATH_MIGRATION_SPEECHES_SIMILARITIES)
 
+# Convert year_x to numeric (it's stored as string in the parquet file)
+df['year_x'] = pd.to_numeric(df['year_x'])
+
 selected_categories = [
     "immigrants_as_threat",
     "immigrants_as_problematic",
@@ -17,19 +20,15 @@ selected_categories = [
 ]
 
 category_labels = {
-    "immigrants_as_threat": "Supernarrative: \n \\textit{Immigration is a Threat}",
-    "immigrants_as_problematic": "Supernarrative: \n \\textit{Immigrants' Culture is Problematic}",
+    "immigrants_as_threat": "Supernarrative a: \n \\textit{Immigration is a Threat}",
+    "immigrants_as_problematic": "Supernarrative b: \n \\textit{Immigrants' Culture is Problematic}",
     "immigrants_humanitarian": "Control narrative: \n \\textit{Humanitarian Principles in Migration}"
 }
-
-# filter df to only CHES years and compute correlations
-ches_years = df['year_ches'].unique()
-df_ches = df[df['year_x'].isin(ches_years)].copy()
 
 # get CHES dimensions that were assessed in at least 2 different years
 ches_dims = const.CHES_DIMENSIONS.copy()
 for dim in const.CHES_DIMENSIONS:
-    if len(df_ches['year_x'].loc[df_ches[dim].notna()].unique()) < 2:
+    if len(df['year_x'].loc[df[dim].notna()].unique()) < 2:
         ches_dims.remove(dim)
 
 # compute correlations for each narrative
@@ -41,7 +40,7 @@ corrected_alpha = alpha / num_tests
 significance_data = {}
 for ches_dim in ches_dims:
     for narrative in selected_categories:
-        df_subset = df_ches.dropna(subset=[narrative, ches_dim])
+        df_subset = df.dropna(subset=[narrative, ches_dim])
         # if len(df_subset) > 10:
         cor, p_value = stats.pearsonr(df_subset[narrative], df_subset[ches_dim])
         significance_data[(ches_dim, narrative)] = (cor, p_value, p_value < corrected_alpha)
@@ -91,7 +90,7 @@ for i, category in enumerate(selected_categories):
 
 # Bottom row: mini heatmaps
 # Add title for bottom row
-fig.text(0, 0.23, 'Most \n Correla- \n ted Party \n Ratings', ha='left')
+fig.text(0, 0.25, 'Highest \n CHES score \n Correlations', ha='left')
 
 for i, category in enumerate(selected_categories):
     ax = axes[1, i]
@@ -115,8 +114,7 @@ for i, category in enumerate(selected_categories):
         ax.set_yticks([])
 
         ches_labels = {"anti_islam_rhetoric": "Anti-Islam \n Rhetoric",
-                       "eu_asylum": "EU-Asylum \n Policy",
-                       "protectionism" : "Protectionism",
+                       "multicult_salience" : "Multiculture \n Salience",
                        "people_vs_elite": "People \n vs. Elite",
                        "immigrate_salience" : "Migration \n Salience"
                        }
@@ -142,19 +140,19 @@ for i, category in enumerate(selected_categories):
         ax.set_xticks([])
         ax.set_yticks([])
 
-# Manually adjust subplot positions to reduce vertical spacing
+# Manually adjust subplot positions to reduce vertical spacing and size
 for i in range(3):
     # Get positions
     pos_top = axes[0, i].get_position()
     pos_bottom = axes[1, i].get_position()
     
-    # Move bottom row up closer to top row
-    new_bottom = pos_top.y0 - 0.3  # Adjust this value to control spacing
-    axes[1, i].set_position([pos_bottom.x0, new_bottom, pos_bottom.width, pos_bottom.height])
+    # Reduce height of bottom row and move up closer to top row
+    new_height = pos_bottom.height * 0.85  # Reduce to 50% of original height
+    new_bottom = pos_top.y0 - 0.28  # Adjust vertical position
+    axes[1, i].set_position([pos_bottom.x0, new_bottom, pos_bottom.width, new_height])
 
 fig.legend(handles=handles, labels=[const.LEGEND_BLOCK[label] for label in labels], 
            loc='upper center', ncol=len(const.ORDER_BLOCK), frameon=True, 
            bbox_to_anchor=(0.5, 0.92), fancybox=True, shadow=False)
 
 fig.savefig("report/fig/fig4_search.pdf", bbox_inches='tight')
-fig.savefig("report/fig/fig4_search.png", bbox_inches='tight')
