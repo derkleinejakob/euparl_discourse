@@ -19,7 +19,7 @@ selected_categories = [
 category_labels = {
     "immigrants_as_threat": "Supernarrative: \n \\textit{Immigration is a Threat}",
     "immigrants_as_problematic": "Supernarrative: \n \\textit{Immigrants' Culture is Problematic}",
-    "immigrants_humanitarian": "Comparison narrative: \n \\textit{Humanitarian Principles in Migration}"
+    "immigrants_humanitarian": "Control narrative: \n \\textit{Humanitarian Principles in Migration}"
 }
 
 # filter df to only CHES years and compute correlations
