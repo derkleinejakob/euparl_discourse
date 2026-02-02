@@ -7,19 +7,3 @@ We evaluated multiple model specifications and selected the model based on topic
 
 The threshold was determined by two raters sampling 100 speeches from the probability range where the cutoff was expected based on initial tests %([0.20, 0.35])
 and classifying whether they were migration-related. Using receiver operating characteristic analysis, we identified the threshold that minimized the difference between true and false positive rates. %(prob = 0.25).
-
-% Why LDA and not something else?
-% (TODO why LDA?)
-% Description LDA
-% LDA is a probabilistic topic model. 
-% It assumes that in the analyzed corpus (here: the collection of speeches) there is a set of topics, which are probability distributions over all words in the corpus. 
-% It considers each document (here: a speech) as a bag of words that were sampled from these topics. 
-% For example, if a topic had high probabilities for the words "fish", "net", "water", then documents covering "fishing" would (under LDA's assumptions) have a high probability of being labelled as that topic. 
-% Our LDA
-
-
-% We tested different parameters (numer of topics, number of iterations over the dataset) and compared 
-% the resulting topic coherence (TODO explanation) and the fidelity of the topics through manual inspection.
-% Our final model contains 30 topics (for 10 iterations) --- one of which assigns highest probabilities to the words X, Y, Z (TODO words), which we call "migration topic".
-
-% threshold
