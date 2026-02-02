@@ -162,37 +162,25 @@
 
     \input{sections/2_data_methods/preprocessing/commentary.tex}
 
+    \input{fig/fig1.tex}
+
     \subsection{Methods}
+
+
     \input{sections/2_data_methods/methods/lda.tex}
+
     \input{sections/2_data_methods/methods/agenda_setting.tex}
     \input{sections/2_data_methods/methods/embeddings.tex}
-
-\begin{figure}[ht]
-\vskip 0.2in
-\begin{center}
-\centerline{\includegraphics[width=\columnwidth]{"fig/fig1_lda.pdf"}}
-\caption{LDA results. \textbf{Top:} Number of speeches for selected topics in EP debates, divided by total number of speeches per year. Topic labels were created manually based on most-frequent topic words. See repository for an interactive version with all topics.
-\textbf{Bottom:} Absolute number of migration speeches by parliamentary group. Written speeches were discontinued in 2017.}
-
-\label{fig:fig1_lda}
-\end{center}
-\vskip -0.2in
-\end{figure}
-
+    
 \section{Results}\label{sec:results}
-% In this section outline your results. At this point, you are just stating the outcome of your analysis. You can highlight important aspects (``we observe a significantly higher value of $x$ over $y$''), but leave interpretation and opinion to the next section. This section absoultely \emph{must} include at least two figures.
-\input{sections/3_results/lda.tex}
-\input{sections/3_results/pls.tex}
 
-\begin{figure*}[ht]
-\vskip 0.2in
-\begin{center}
-\centerline{\includegraphics[width=\textwidth]{"fig/fig4_search.pdf"}}
-\caption{Semantic similarity to two migration supernarratives and the control prompt: temporal trajectories and top correlations to expert party ratings (CHES scores). Shadings indicate bootstrapped 95\% confidence intervals.}
-\label{fig:fig4_search}
-\end{center}
-\vskip -0.2in
-\end{figure*}
+\input{fig/fig3.tex}
+
+\input{fig/fig4.tex}
+
+\input{sections/3_results/lda.tex}
+
+\input{sections/3_results/pls.tex}
 
 \input{sections/3_results/sem_search.tex}
 
