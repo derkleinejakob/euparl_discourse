@@ -33,7 +33,7 @@ aggregated = get_aggregated_embeddings_for_each_year(df, EMBEDDING_MODEL, 'block
 X = np.stack(df[EMBEDDING_MODEL])
 
 vocab_df['word'] = vocab_df['word'].str.replace("humanrights", "human-rights-")  # small correction for visual aesthetics
-
+vocab_df['word'] = vocab_df['word'].str.replace("eurodelegation", "euro-delegation")  # small correction for visual aesthetics
 
 lb = LabelEncoder()
 y = lb.fit_transform(df["block"])
