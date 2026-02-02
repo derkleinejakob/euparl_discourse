@@ -145,3 +145,5 @@ ax2_combined.yaxis.set_label_coords(-0.12, 0.5)
 # fig.tight_layout()
 fig.savefig("report/fig/fig1_lda.pdf")
 
+# for readme, l
+fig.savefig("report/fig/fig1_lda.png")
