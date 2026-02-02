@@ -11,6 +11,16 @@ from tueplots import bundles
 from src.constants import COLOR_MAPS, PATH_VOCAB_EMBEDDED, EMBEDDING_MODEL, PATH_MIGRATION_SPEECHES_EMBEDDED, LEGEND_BLOCK, ORDER_BLOCK
 from src.dim_reduction import display_axis_semantics, closest_words_for_pc, get_aggregated_embeddings_for_each_year
 
+# Override legend label to add newline
+LEGEND_BLOCK = {
+    "left": "Left",
+    "green": "Greens",
+    "social_democratic": "Social\nDemocrats",
+    "christian_conservative": "Conservatives",
+    "liberal": "Liberals",
+    "(extreme)_right": "(Far) Right",
+}
+
 from sklearn.preprocessing import LabelEncoder
 from sklearn.cross_decomposition import PLSRegression
 from sklearn.model_selection import train_test_split
@@ -116,15 +126,15 @@ def display_results(df: pd.DataFrame, model, axis: tuple[int], aggregated: pd.Da
 
     legend_elements = [
         Line2D([0], [0], color=color_map[k], lw=2, label=LEGEND_BLOCK[k])
-        for k in color_map
+        for k in ORDER_BLOCK
     ]
     
     fig.legend(
         handles=legend_elements,
-        loc="upper center",
-        ncol=len(legend_elements) // 2,
+        loc="center left",
+        ncol=1,
         frameon=True,
-        bbox_to_anchor=(0.5, 1.1)    
+        bbox_to_anchor=(0.95, 0.5)    
         ) # hide the legend in the hopes for a figure beside it explaining the colors
 
     # fig.subplots_adjust(bottom=0.22)

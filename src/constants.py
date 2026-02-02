@@ -61,12 +61,12 @@ COLOR_MAP_BLOCK = {
 }
 
 ORDER_BLOCK = [
-    "(extreme)_right",
-    "christian_conservative",
-    "liberal",
-    "social_democratic",
+    "left",
     "green",
-    "left"
+    "social_democratic",
+    "liberal",
+    "christian_conservative",
+    "(extreme)_right"
 ]
 
 LEGEND_BLOCK = {
