@@ -1,24 +1,35 @@
 
 % Use this section to briefly summarize the entire text. Highlight limitations and problems, but also make clear statements where they are possible and supported by the analysis.
 
-Our analysis of European Parliament speeches (2014--2024) reveals systematic patterns in migration discourse. 
+Our analysis of European Parliament speeches (2014 to 2024) reveal systematic differences in migration rhetoric between party groups. 
 
 % LDA & Agenda setting  
 % TODO: talk about LDA misclassification rate as limitations? 
-Topic modeling shows a continuous prevalence of migration-related debate. Far-right parties indicate active agenda-setting behavior by introducing migration into debates, particularly about economy and security. For other party blocks, this phenomenon is too rare to assert a defnite pattern and can partly be drawn to misclassifications of the LDA model. However, there are indications of a polar divide: Green and left parties tend to introduce migration to debates on humanitarian issues. Examining whether such a left-right distinction shapes where migration discourse is fed into the debate is a promising direction for further research.
+
+Far-right parties indicate active agenda-setting behavior by introducing migration into debates, particularly about economy and security. For other party blocs, this phenomenon is too rare to assert a defnite pattern and can partly be drawn to misclassifications of the LDA model. However, there are indications of a polar divide: Green and left parties tend to introduce migration to debates on humanitarian issues. Examining whether such a left-right distinction shapes where migration discourse is fed into the debate is a promising direction for further research.
+
+Dimensionality reduction via PLS reveals two largely interpretable axes that separate parties in semantic space. While the first axis is clearly interpretable, the positive direction of the second includes terms related to Eastern Europe, raising questions about its interpretability and meaningfulness. Although a definitive interpretation of the underlying political dimensions requires substantial domain knowledge, word associations and extreme speeches along each axis permit tentative conclusions. Despite the noisy nature of general-purpose embeddings, which likely contributes to blurred axis labels, the strong party separation along the axes supports cautious interpretation. We interpret the first PLS axis as a
+\verb|conciliatory| $\Leftrightarrow$ \verb|oppositional| discourse spectrum. The second axis is less distinct but likely reflects a \verb|moral| $\Leftrightarrow$ \verb|pragmatic-benefits| / \verb|security| dimension. Overall, these results indicate that PLS is a useful exploratory method for uncovering latent dimensions of political discourse in high-dimensional text embeddings.
+
+todo: what can we see? extreme-rights are different in first dimension, left and green especially in second dimension. 
+
+% old version: 
+% The resulting micro-averaged F1 score from leave-one-out cross-validation is $ 0.45 \pm 0.35$ (mean $ \pm$ std. accross validation folds).
+% While a clear interpretation of the underlying political dimensions requires substantial domain knowledge, combining word associations with extreme examples of speeches along each axis provides some clues.
+% Based on this analysis, we interpret the first PLS axis as a \textbf{conciliatory $\Leftrightarrow$  oppositional} discourse spectrum. The second axis is less distinct, but likely reflects a \textbf{moral / human-rights $\Leftrightarrow$ pragmatic-benefits / security} dimension \autoref{fig:fig3_pls}. 
+% Consistent with the interpretation, Pearson correlation with CHES party ratings shows that axis 2 correlates most strongly with EU asylum ($r = -0.45$), anti-Islam rhetoric ($r = 0.46$), and attitudes toward ethnic minorities ($r = 0.44$), while Axis 1 displays the strongest correlations with protectionism ($r = 0.57$), EU asylum ($r = -0.55$), and people-versus-elite rhetoric ($r = 0.55$).
+
+% PLS analysis, while constrained by noisy, unbalanced parliamentary data and the use of general-purpose embeddings, is a useful exploratory tool for uncovering latent political discourse dimensions in high-dimensional textual embeddings,
+% although it is vital to ground such finding in expert domain knowledge.
+
+Semantic similarity results indicate that far-right rhetoric in the EP is characterized by a higher adoption of previously identified anti-immigrant narratives, without evidence of growth over the last decade. High correlations with established political scales support the validity of this approach as a computational tool for quantifying rhetoric tropes. At the same time, the embedding approach to political speech analysis cannot fully distinguish between mere invocation of statements and actual evaluative stances.
+
+Across all analyses, right-wing populist speech emerges as distinct from other parties. In particular, parties on the political right appear more likely to foreground migration-related themes, while placing less emphasis on humanitarian concerns and framing immigrants in terms of threat, burden, and illegality.
 
 
-[TODO: summary sentences for each analysis, limitations, conclusion]
-
-PLS analysis, while constrained by noisy, unbalanced parliamentary data and the use of general-purpose embeddings, is a useful exploratory tool for uncovering latent political discourse dimensions in high-dimensional textual embeddings,
-although it is vital to ground such finding in expert domain knowledge.
-
-% semantic search
-Our results indicate that far-right rhetoric in the EP is characterized by a higher adoption of previously identified anti-immigrant narratives, without evidence of growth over the last decade. High correlations with established political scales indicate that this approach is a viable and promising computational tool for quantifying rhetoric tropes.  % TODO: einräumen, dass semantic search aber auch keyword search related sein könnte und deswegen fehlgeleitet sein könnte 
+% TODO: einräumen, dass semantic search aber auch keyword search related sein könnte und deswegen fehlgeleitet sein könnte 
 
 % Methodologically, we demonstrate how combining LDA topic modeling, semantic embeddings, and narrative detection can capture both topical focus and rhetorical framing. While translation consistency and temporal confounding present limitations, our findings illuminate how populist discourse enters mainstream parliamentary institutions, with implications for European democratic deliberation.
-% \newpage
-
 % \section*{Notes}
 
 % Your entire report has a \textbf{hard page limit of 4 pages} excluding references and the contribution statement. (I.e. any pages beyond page 4 must only contain the contribution statement and references). Appendices are \emph{not} possible. But you can put additional material, like interactive visualizations or videos, on a githunb repo (use \href{https://github.com/pnkraemer/tueplots}{links} in your pdf to refer to them). Each report has to contain \textbf{at least three plots or visualizations}, and \textbf{cite at least two references}. More details about how to prepare the report, inclucing how to produce plots, cite correctly, and how to ideally structure your github repo, will be discussed in the lecture, where a rubric for the evaluation will also be provided.
