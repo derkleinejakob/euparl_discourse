@@ -11,7 +11,7 @@ To best capture political orientation in the embeddings, we selected the final m
 
 Dimensionality reduction has been used to study ideological change over time and to recover latent political dimensions \citep{Rheault2020-mr}. % NOTE: I added that it was PCA because to me it was not really understandable - I hope it makes sense 
 Exploratory PCA showed that, although party affiliations is present, it is not dominant in the overall variance of the embedding space. 
-To identify a subspace in which political and ideological differences become more salient, we employ Partial Least Squares (PLS), which extracts directions maximally associated with party labels. To mitigate and quantify temporal bias, we excluded written speeches concentrated in 2015 and 2016 and % fit the PLS model on the remaining 5,433 observations, 
+To identify a subspace in which political and ideological differences become more salient, we employ Partial Least Squares (PLS), which extracts directions maximally associated with party labels. To mitigate and quantify temporal bias, we excluded written speeches concentrated in 2015 and 2016, fit the PLS model on the remaining 5,433 observations and 
 evaluate the model using a temporally adapted leave-one-out cross-validation strategy \citep{roberts_temporal_2017}.
 
 The prevalence of established migration-related rhetoric is assessed using semantic search. We use 30 migration narratives identified in a recent report by the European Commission’s Joint Research Centre \citep[p.130]{seiger_navigating_2025}, organized into four broader ``supernarratives.'' Each narrative was represented by a short descriptive sentence and embedded. % using the model’s built-in ``retrieval-query'' prompt. 
