@@ -1,5 +1,6 @@
-\textbf{Translation}
+\subsubsection{Translation}
 % until Nov 2012 EU published translations themselves https://html-preview.github.io/?url=https://github.com/ChRauh/OPTED-WP5-Translation/blob/main/PLS-TranslationDocumentation.html
 % Parrlaw translated until April 18 2019
-We use English translations to control for potential biases introduced by using speeches of different languages. 
-The European Parliament provided speech translations until 2012, which was extended with machine translations by Parllaw for speeches until 2019 \citep{rauh_documentation_2023}. We filled in the remaining translations using \emph{Gemini 2.5-flash} \citep{gemini_2025}. We tested its translations on a random sample of speeches that had been machine-translated by Parllaw and checked that Gemini (i) preserved speeches which were already in English and (ii) created translations with embeddings close to Parllaw's for non-English speeches (mean cosine similarity: $0.969$, $n=1001$; bootstrapped $0.95$ confidence interval). Thus, we assume that Gemini's and Parllaw's translations are similar enough to fill in the missing translations with Gemini's.
+We use English translations to control for potential biases introduced by embeddings of different languages. 
+Official translations were provided until 2012, which were extended with machine translations by Parllaw until 2019 \citep{rauh_documentation_2023}. We filled in the remaining translations using \emph{Gemini 2.5-flash} \citep{gemini_2025} and tested its translations on a random sample of speeches that had been translated by Parllaw. We checked that it (i) preserves speeches which are in English and (ii) creates translations with embeddings close to Parllaw's (lower $0.95$ bootstrap CI bound of mean cosine similarity: $0.969$; $n=1001$). %Thus, we asummed the difference in translation sources to be negligible. 
+
