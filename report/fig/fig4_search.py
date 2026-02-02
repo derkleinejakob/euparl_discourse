@@ -151,7 +151,17 @@ for i in range(3):
     new_bottom = pos_top.y0 - 0.28  # Adjust vertical position
     axes[1, i].set_position([pos_bottom.x0, new_bottom, pos_bottom.width, new_height])
 
-fig.legend(handles=handles, labels=[const.LEGEND_BLOCK[label] for label in labels], 
+# Reorder legend handles and labels according to ORDER_BLOCK
+ordered_handles = []
+ordered_labels = []
+label_to_handle = dict(zip(labels, handles))
+for block_key in const.ORDER_BLOCK:
+    if block_key in labels:
+        idx = labels.index(block_key)
+        ordered_handles.append(handles[idx])
+        ordered_labels.append(const.LEGEND_BLOCK[block_key])
+
+fig.legend(handles=ordered_handles, labels=ordered_labels, 
            loc='upper center', ncol=len(const.ORDER_BLOCK), frameon=True, 
            bbox_to_anchor=(0.5, 0.95), fancybox=True, shadow=False, framealpha=1.0)
 
