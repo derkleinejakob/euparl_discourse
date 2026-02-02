@@ -3,7 +3,7 @@
 % Shortened suggestion by Jakob 
 The speeches often include bracketed comments that may contain markers of the original language, parliamentary incidents, or procedural notes. We removed these comments using rule-based methods. 
 
-There are also substantial redundencies in the openning and closing sections of the speeches (greetings, etc.). These sections follow similar rhetorical structures but exhibit substantial lexical variation. To remove redundant formalities, we identify low-impact sentences using TF-IDF which scores the amount of information of a sentence (TODO, source). %[TODO: add source / publication where TF-IDF was first published]
+There are also substantial redundencies in the openning and closing sections of the speeches (greetings, etc.). These sections follow similar rhetorical structures but exhibit substantial lexical variation. To remove redundant formalities, we identified low-impact sentences using TF-IDF which scores the amount of information of a sentence (TODO, source). %[TODO: add source / publication where TF-IDF was first published]
 Two independent raters annotated a sample of 100 low-scoring sentences for informational relevance. With these manual ratings, we fit a logistic regression model to estimate the threshold required to achieve 95\% accuracy for classifying the relevance of a sentence based on its TF/IDF score. For each speech, first and last sentences were removed if their TF-IDF score was below the computed threshold.
 
 
