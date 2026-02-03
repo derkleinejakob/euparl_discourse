@@ -40,7 +40,7 @@ This repository contains the code to reproduce the analyses of the research proj
     </td>
   </tr>
 </table>
-
+Curious now? Read the <a href="report/report.pdf">report</a> right away!
 
 ## Data 
 The data can be downloaded from this drive [here](https://1drv.ms/f/c/3670b767c48f3a5a/IgBsXCcCz6fkSorwOSCBCmbcAQafr4adbAmXrhAeawosNGU?e=UJoUiq).
