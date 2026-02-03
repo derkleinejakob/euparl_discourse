@@ -51,7 +51,7 @@ It contains:
 
 **To get started:** 
 After cloning the repository, download the 'data' folder from the drive (you have read-access, see above) and place it in the project's root.
-To install the requirements, use pip:
+To install the requirements, use pip and `python=3.12`
 ```
 pip install -r requirements.txt
 ```
