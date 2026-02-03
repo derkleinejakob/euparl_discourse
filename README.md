@@ -43,15 +43,22 @@ This repository contains the code to reproduce the analyses of the research proj
 
 
 ## Data 
-The data can be downloaded from the drive [here](https://1drv.ms/f/c/3670b767c48f3a5a/IgBsXCcCz6fkSorwOSCBCmbcAQafr4adbAmXrhAeawosNGU?e=UJoUiq).
+The data can be downloaded from this drive [here](https://1drv.ms/f/c/3670b767c48f3a5a/IgBsXCcCz6fkSorwOSCBCmbcAQafr4adbAmXrhAeawosNGU?e=UJoUiq).
 It contains:
 - Initially collected data, on which the preprocessing was employed ('original/...')
 - Data, resulting either from various preprocessing steps (and/or being input to further steps in the pipeline) or from exploratory analysis ('intermed/...')
 - The 'final' data, on which the conclusive analysis (and plot generation) was performed ('final/...')
 
+**To get started:** 
+After cloning the repository, download the 'data' folder from the drive (you have read-access, see above) and place it in the project's root.
+To install the requirements, use pip:
+```
+pip install -r requirements.txt
+```
+
 
 ### Preprocessing 
-The Parllaw speech dataset was first [transformed to .csv-files](src/transform_pls_rds_to_csv.R) and then [preprocessed](src/preprocess_data.py). 
+The Parllaw speech dataset was first [transformed to .csv-files](src/transform_pls_rds_to_csv.R) and then [preprocessed](src/preprocess_data.py).
 
 #### Translation
 *Note: Translation was done before data-preprocessing.*
