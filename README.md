@@ -59,6 +59,7 @@ pip install -r requirements.txt
 
 ### Preprocessing 
 The Parllaw speech dataset was first [transformed to .csv-files](src/transform_pls_rds_to_csv.R) and then [preprocessed](src/preprocess_data.py).
+The preprocessed data was then merged with the CHES dataset ([merge overview](experiments/preprocessing_checks/pre5_ches_merge_plan.md))
 
 #### Translation
 *Note: Translation was done before data-preprocessing.*
